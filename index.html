@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anglet.immo — Thermomètre immobilier</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.8.0/dist/tabler-icons.min.css" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal: #1A7A6E; --teal-light: #E3F4F2; --teal-dark: #0F5249;
+  --purple-light: #EEEDFE; --purple: #534AB7;
+  --amber-light: #FAEEDA; --amber: #854F0B;
+  --green-light: #EAF3DE; --green: #3B6D11;
+  --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b;
+  --bg: #f4f6f5; --surface: #ffffff; --border: rgba(0,0,0,0.10);
+  --radius-md: 10px; --radius-lg: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f0ede8; --text-secondary: #a8a49e; --text-tertiary: #6b6763;
+    --bg: #171a19; --surface: #212422; --border: rgba(255,255,255,0.10);
+    --teal-light: rgba(26,122,110,0.18); --purple-light: rgba(83,74,183,0.18);
+    --amber-light: rgba(133,79,11,0.18); --green-light: rgba(59,109,17,0.18);
+  }
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+  padding: 2rem 1rem 4rem;
+}
+.app { width: 100%; max-width: 420px; }
+.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-dot { width: 32px; height: 32px; border-radius: 8px; background: var(--teal); display: flex; align-items: center; justify-content: center; }
+.logo-dot i { color: white; font-size: 16px; }
+.logo-text { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
+.logo-text span { color: var(--teal); }
+.header-right { display: flex; align-items: center; gap: 8px; }
+.lang-switcher { display: flex; gap: 2px; background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; padding: 2px; }
+.lang-btn { font-size: 11px; font-weight: 600; padding: 4px 8px; border: none; background: transparent; color: var(--text-tertiary); cursor: pointer; border-radius: 6px; transition: all 0.15s; font-family: inherit; letter-spacing: 0.3px; }
+.lang-btn:hover { color: var(--text); }
+.lang-btn.active { background: var(--surface); color: var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.search-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+.search-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: block; }
+.search-row { display: flex; gap: 8px; align-items: flex-start; }
+.autocomplete-wrap { position: relative; flex: 1; min-width: 0; }
+.autocomplete-wrap input { display: block; width: 100%; height: 42px; padding: 0 12px; font-size: 14px; border-radius: var(--radius-md); border: 0.5px solid var(--border); background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; font-family: inherit; }
+.autocomplete-wrap input:focus { border-color: var(--teal); }
+.autocomplete-wrap input::placeholder { color: var(--text-tertiary); }
+.autocomplete-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 100; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.autocomplete-dropdown.open { display: block; }
+.ac-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-size: 13px; border-bottom: 0.5px solid var(--border); transition: background 0.1s; }
+.ac-item:last-child { border-bottom: none; }
+.ac-item:hover, .ac-item.active { background: var(--bg); }
+.ac-item i { font-size: 14px; color: var(--teal); flex-shrink: 0; }
+.ac-main { color: var(--text); }
+.ac-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
+.btn-search { height: 42px; padding: 0 18px; background: var(--teal); color: white; border: none; border-radius: var(--radius-md); font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: opacity 0.15s; }
+.btn-search:hover { opacity: 0.85; }
+.btn-search:disabled { opacity: 0.5; cursor: not-allowed; }
+.suggestions-label { font-size: 11px; color: var(--text-tertiary); margin-top: 12px; margin-bottom: 6px; }
+.suggestions { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font-size: 11px; padding: 5px 11px; background: var(--bg); border: 0.5px solid var(--border); border-radius: 20px; color: var(--text-secondary); cursor: pointer; transition: all 0.1s; white-space: nowrap; }
+.chip:hover { background: var(--surface); color: var(--text); border-color: var(--teal); }
+.chip.active { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal); }
+.loader { display: none; flex-direction: column; align-items: center; gap: 12px; padding: 2.5rem 0; }
+.loader.visible { display: flex; }
+.dot-pulse { display: flex; gap: 5px; }
+.dot-pulse span { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 1.2s ease-in-out infinite; }
+.dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
+.dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes pulse { 0%,80%,100%{opacity:.2;transform:scale(.8)} 40%{opacity:1;transform:scale(1)} }
+.loader-step { font-size: 12px; color: var(--text-tertiary); }
+.result-section { display: none; animation: fadeUp 0.4s ease; }
+.result-section.visible { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.error-card { background: var(--surface); border: 0.5px solid rgba(26,122,110,0.3); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; color: var(--teal-dark); font-size: 13px; display: none; }
+.error-card.visible { display: block; }
+.street-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 1rem; }
+.street-name { font-size: 16px; font-weight: 600; }
+.street-sub { font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
+.badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
+.badge-hot  { background: var(--teal-light);  color: var(--teal-dark); }
+.badge-warm { background: var(--amber-light); color: var(--amber); }
+.badge-cool { background: var(--green-light); color: var(--green); }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.stat-card { background: var(--bg); border-radius: var(--radius-md); padding: 14px; }
+.stat-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+.stat-label i { font-size: 14px; }
+.stat-value { font-size: 24px; font-weight: 600; line-height: 1; }
+.stat-unit { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
+.trend-up { color: var(--green); }
+.trend-down { color: var(--teal-dark); }
+.chart-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+.chart-title { font-size: 12px; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.ai-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+.ai-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.ai-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; }
+.ai-icon i { color: var(--purple); font-size: 15px; }
+.ai-label { font-size: 14px; font-weight: 500; }
+.ai-sublabel { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
+.ai-text { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+.ai-text strong { color: var(--text); font-weight: 500; }
+.score-row { display: flex; gap: 8px; margin-top: 14px; }
+.score-item { flex: 1; }
+.score-bar-bg { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 5px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 2px; background: var(--teal); transition: width 0.9s cubic-bezier(.4,0,.2,1); }
+.score-key { font-size: 10px; color: var(--text-tertiary); }
+.sample-list { margin-top: 12px; border-top: 0.5px solid var(--border); padding-top: 12px; }
+.sample-item { padding: 8px 0; border-bottom: 0.5px solid var(--border); }
+.sample-item:last-child { border-bottom: none; }
+.sample-item.searched { background: var(--teal-light); margin: 0 -12px; padding: 8px 12px; border-radius: 6px; }
+.sample-row1 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.sample-row2 { display: flex; gap: 10px; margin-top: 3px; }
+.sample-addr { font-size: 12px; font-weight: 500; color: var(--text); }
+.sample-addr .you-tag { font-size: 10px; background: var(--teal); color: white; border-radius: 4px; padding: 1px 5px; margin-left: 4px; vertical-align: middle; font-weight: 400; }
+.sample-price { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; }
+.sample-meta { font-size: 11px; color: var(--text-tertiary); display: flex; align-items: center; gap: 4px; }
+.sample-meta i { font-size: 11px; }
+.dvf-note { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-tertiary); }
+.dvf-note i { font-size: 13px; }
+.dvf-note a { color: var(--text-tertiary); }
+footer { margin-top: 3rem; text-align: center; font-size: 11px; color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-dot"><i class="ti ti-home"></i></div>
+      <div class="logo-text">Anglet<span>.immo</span></div>
+    </div>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn"        onclick="setLang('en')">EN</button>
+        <button class="lang-btn"        onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-card">
+    <span class="search-label" data-i18n="searchLabel"></span>
+    <div class="search-row">
+      <div class="autocomplete-wrap">
+        <input type="text" id="addressInput" autocomplete="off" />
+        <div class="autocomplete-dropdown" id="acDropdown"></div>
+      </div>
+      <button class="btn-search" id="btnSearch" onclick="analyzeInput()">
+        <i class="ti ti-search"></i> <span data-i18n="btnSearch"></span>
+      </button>
+    </div>
+    <div class="suggestions-label" data-i18n="chipsLabel"></div>
+    <div class="suggestions">
+      <div class="chip" id="chip-chiberta"          onclick="analyzeZone('chiberta')"><span data-i18n="chip_chiberta"></span></div>
+      <div class="chip" id="chip-chambre-amour"     onclick="analyzeZone('chambre-amour')"><span data-i18n="chip_chambre-amour"></span></div>
+      <div class="chip" id="chip-quintaou"          onclick="analyzeZone('quintaou')"><span data-i18n="chip_quintaou"></span></div>
+      <div class="chip" id="chip-blancpignon"       onclick="analyzeZone('blancpignon')"><span data-i18n="chip_blancpignon"></span></div>
+      <div class="chip" id="chip-sutar-brindos"     onclick="analyzeZone('sutar-brindos')"><span data-i18n="chip_sutar-brindos"></span></div>
+    </div>
+  </div>
+
+  <div class="loader" id="loader">
+    <div class="dot-pulse"><span></span><span></span><span></span></div>
+    <div class="loader-step" id="loaderStep"></div>
+  </div>
+  <div class="error-card" id="errorCard"></div>
+
+  <div class="result-section" id="results">
+    <div class="street-header">
+      <div>
+        <div class="street-name" id="streetName">—</div>
+        <div class="street-sub" id="streetSub">—</div>
+      </div>
+      <span class="badge" id="marketBadge">—</span>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label"><i class="ti ti-trending-up"></i> <span data-i18n="statPrice"></span></div>
+        <div class="stat-value" id="priceM2">—</div>
+        <div class="stat-unit" data-i18n="statPriceUnit"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label"><i class="ti ti-arrow-up-right"></i> <span data-i18n="statEvo"></span></div>
+        <div class="stat-value" id="evolution" style="font-size:20px">—</div>
+        <div class="stat-unit" id="evolutionSub">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label"><i class="ti ti-home"></i> <span data-i18n="statMedian"></span></div>
+        <div class="stat-value" id="medianPrice">—</div>
+        <div class="stat-unit" data-i18n="statMedianUnit"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label"><i class="ti ti-building"></i> <span data-i18n="statTx"></span></div>
+        <div class="stat-value" id="txCount">—</div>
+        <div class="stat-unit" data-i18n="statTxUnit"></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title" data-i18n="chartTitle"></div>
+      <div id="chartContainer" style="position: relative; width: 100%; height: 170px;">
+        <canvas id="priceChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title" data-i18n="txTitle"></div>
+      <div class="sample-list" id="sampleList"></div>
+    </div>
+    <div class="ai-card">
+      <div class="ai-header">
+        <div class="ai-icon"><i class="ti ti-sparkles"></i></div>
+        <div>
+          <div class="ai-label" data-i18n="aiLabel"></div>
+          <div class="ai-sublabel" data-i18n="aiSub"></div>
+        </div>
+      </div>
+      <div class="ai-text" id="aiText">—</div>
+      <div class="score-row" id="scoreRow"></div>
+    </div>
+    <div class="dvf-note">
+      <i class="ti ti-database"></i>
+      <span data-i18n="dvfNote"></span>
+    </div>
+  </div>
+</div>
+
+<footer data-i18n="footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ── LANGUE ────────────────────────────────────────────────────────────────────
+let LANG = 'fr';
+const DATE_LOC = { fr: 'fr-FR', en: 'en-GB', es: 'es-ES' };
+
+const T = {
+  fr: {
+    searchLabel:   'Entrez une adresse à Anglet',
+    placeholder:   'Ex : 12 allée des Pins de Chiberta',
+    btnSearch:     'Analyser',
+    chipsLabel:    'Quartiers de référence',
+    'chip_chiberta':       'Chiberta',
+    'chip_chambre-amour':  'Chambre d\'Amour',
+    'chip_quintaou':       'Quintaou · Mairie',
+    'chip_blancpignon':    'Blancpignon',
+    'chip_sutar-brindos':  'Sutar · Brindos',
+    loaderGeo:     'Géocodage de l\'adresse…',
+    loaderAnalyze: 'Analyse du marché local…',
+    statPrice:     'Prix moyen / m²',
+    statPriceUnit: '€ / m²',
+    statEvo:       'Évolution',
+    statMedian:    'Prix médian',
+    statMedianUnit:'€ / m² (médiane)',
+    statTx:        'Transactions',
+    statTxUnit:    'ventes analysées',
+    chartTitle:    'Évolution prix au m² · 2019–2025',
+    txTitle:       'Dernières transactions DVF · 2025',
+    aiLabel:       'Analyse du quartier',
+    aiSub:         'Basée sur les données DVF 2019–2025',
+    scoreLabels:   ['Plage', 'Commerces', 'Calme', 'Rentabilité'],
+    youTag:        'vous',
+    errNotFound:   'Adresse introuvable à Anglet. Vérifiez le nom de rue.',
+    errOtherCity:  c => `Cette adresse est à ${c}, pas à Anglet.`,
+    dvfNote:       'Sources : <a href="https://www.data.gouv.fr/fr/datasets/5c4ae55a634f4117716d5656" target="_blank">DVF · DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a>',
+    footer:        'Anglet.immo · Données DVF 2019–2025',
+    appt:  'Appt',
+    maison:'Maison',
+  },
+  en: {
+    searchLabel:   'Enter an address in Anglet',
+    placeholder:   'E.g. 12 allée des Pins de Chiberta',
+    btnSearch:     'Search',
+    chipsLabel:    'Reference neighbourhoods',
+    'chip_chiberta':       'Chiberta',
+    'chip_chambre-amour':  'Chambre d\'Amour',
+    'chip_quintaou':       'Quintaou · Town Hall',
+    'chip_blancpignon':    'Blancpignon',
+    'chip_sutar-brindos':  'Sutar · Brindos',
+    loaderGeo:     'Geocoding address…',
+    loaderAnalyze: 'Analysing local market…',
+    statPrice:     'Avg price / m²',
+    statPriceUnit: '€ / m²',
+    statEvo:       'Change',
+    statMedian:    'Median price',
+    statMedianUnit:'€ / m² (median)',
+    statTx:        'Transactions',
+    statTxUnit:    'sales analysed',
+    chartTitle:    'Price per m² trend · 2019–2025',
+    txTitle:       'Latest DVF transactions · 2025',
+    aiLabel:       'Neighbourhood analysis',
+    aiSub:         'Based on DVF data 2019–2025',
+    scoreLabels:   ['Beach', 'Amenities', 'Quiet', 'Yield'],
+    youTag:        'you',
+    errNotFound:   'Address not found in Anglet. Please check the street name.',
+    errOtherCity:  c => `This address is in ${c}, not in Anglet.`,
+    dvfNote:       'Sources: <a href="https://www.data.gouv.fr/fr/datasets/5c4ae55a634f4117716d5656" target="_blank">DVF · DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a>',
+    footer:        'Anglet.immo · DVF data 2019–2025',
+    appt:  'Apt',
+    maison:'House',
+  },
+  es: {
+    searchLabel:   'Introduzca una dirección en Anglet',
+    placeholder:   'Ej: 12 allée des Pins de Chiberta',
+    btnSearch:     'Analizar',
+    chipsLabel:    'Barrios de referencia',
+    'chip_chiberta':       'Chiberta',
+    'chip_chambre-amour':  'Chambre d\'Amour',
+    'chip_quintaou':       'Quintaou · Ayuntamiento',
+    'chip_blancpignon':    'Blancpignon',
+    'chip_sutar-brindos':  'Sutar · Brindos',
+    loaderGeo:     'Geolocalización de la dirección…',
+    loaderAnalyze: 'Analizando el mercado local…',
+    statPrice:     'Precio medio / m²',
+    statPriceUnit: '€ / m²',
+    statEvo:       'Evolución',
+    statMedian:    'Precio mediano',
+    statMedianUnit:'€ / m² (mediana)',
+    statTx:        'Transacciones',
+    statTxUnit:    'ventas analizadas',
+    chartTitle:    'Evolución precio por m² · 2019–2025',
+    txTitle:       'Últimas transacciones DVF · 2025',
+    aiLabel:       'Análisis del barrio',
+    aiSub:         'Basado en datos DVF 2019–2025',
+    scoreLabels:   ['Playa', 'Comercios', 'Tranquilidad', 'Rentabilidad'],
+    youTag:        'usted',
+    errNotFound:   'Dirección no encontrada en Anglet. Compruebe el nombre de la calle.',
+    errOtherCity:  c => `Esta dirección está en ${c}, no en Anglet.`,
+    dvfNote:       'Fuentes: <a href="https://www.data.gouv.fr/fr/datasets/5c4ae55a634f4117716d5656" target="_blank">DVF · DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a>',
+    footer:        'Anglet.immo · Datos DVF 2019–2025',
+    appt:  'Apto',
+    maison:'Casa',
+  }
+};
+
+function t(key) { return T[LANG][key] ?? T['fr'][key] ?? key; }
+
+function setLang(lang) {
+  LANG = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent === lang.toUpperCase())
+  );
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (key === 'dvfNote') { el.innerHTML = t(key); return; }
+    el.textContent = t(key);
+  });
+  document.getElementById('addressInput').placeholder = t('placeholder');
+  if (currentZone && document.getElementById('results').classList.contains('visible')) {
+    render(currentZone, currentGeo);
+  }
+}
+
+// ── DONNÉES ───────────────────────────────────────────────────────────────────
+const BAN = 'https://api-adresse.data.gouv.fr/search/';
+const AGL = '64024'; // INSEE Anglet
+
+const ZONES = [
+  {
+    id: 'chiberta',
+    name: { fr: 'Chiberta',                      en: 'Chiberta',                       es: 'Chiberta' },
+    zone: { fr: 'Anglet · Lac & Forêt de pins',  en: 'Anglet · Lake & Pine Forest',    es: 'Anglet · Lago y Pinar' },
+    lat: 43.5065, lon: -1.5415,
+    price: 6400, median: 6000, tx: 38, evo: '+45', eLabel: '+45% (2019→2025)',
+    history: [4400, 5000, 5600, 6600, 6300, 6100, 6400],
+    years: ['2019','2020','2021','2022','2023','2024','2025'],
+    badge: { label: { fr: 'Marché très tendu', en: 'Very tight market', es: 'Mercado muy tenso' }, cls: 'badge-hot' },
+    ai: {
+      fr: '<strong>Chiberta</strong> est le quartier le plus prisé d\'Anglet. Entre le lac de Chiberta, la forêt de pins centenaires et le golf, ce secteur résidentiel huppé accueille villas contemporaines et appartements avec vue sur le lac. Clientèle aisée, marché discret — les biens se vendent souvent de gré à gré, avec des prix pouvant dépasser <strong>8 000 €/m²</strong> pour les propriétés exceptionnelles en bord de lac.',
+      en: '<strong>Chiberta</strong> is Anglet\'s most sought-after neighbourhood. Nestled between Lake Chiberta, century-old pine forests and the golf course, this upmarket residential area hosts contemporary villas and lake-view apartments. Affluent, discreet market — properties often sell off-market, with exceptional lakeside homes exceeding <strong>8,000 €/m²</strong>.',
+      es: '<strong>Chiberta</strong> es el barrio más codiciado de Anglet. Entre el lago de Chiberta, el pinar centenario y el campo de golf, este sector residencial de lujo alberga villas contemporáneas y apartamentos con vistas al lago. Mercado selecto y discreto — los bienes se venden a menudo de manera privada, con precios que pueden superar los <strong>8.000 €/m²</strong> para propiedades excepcionales.',
+    },
+    scores: [[85],[40],[95],[62]],
+    nearby: [
+      { rue: 'ALLÉE DES PINS DE CHIBERTA', num: '8',  type: 'appt',   surface: 82,  floor: '2e',  pm2: 7100, date: '2025-03-12' },
+      { rue: 'ALLÉE DU LAC',               num: '4',  type: 'maison', surface: 195, floor: null,  pm2: 6800, date: '2025-01-20' },
+      { rue: 'RUE DU GOLF',                num: '12', type: 'appt',   surface: 65,  floor: '1er', pm2: 6200, date: '2025-02-18' },
+    ]
+  },
+  {
+    id: 'chambre-amour',
+    name: { fr: 'Chambre d\'Amour',              en: 'Chambre d\'Amour',               es: 'Chambre d\'Amour' },
+    zone: { fr: 'Anglet · Front de mer nord',    en: 'Anglet · North seafront',         es: 'Anglet · Frente al mar norte' },
+    lat: 43.5255, lon: -1.5530,
+    price: 5700, median: 5300, tx: 52, evo: '+42', eLabel: '+42% (2019→2025)',
+    history: [4000, 4500, 5100, 6000, 5800, 5500, 5700],
+    years: ['2019','2020','2021','2022','2023','2024','2025'],
+    badge: { label: { fr: 'Marché très tendu', en: 'Very tight market', es: 'Mercado muy tenso' }, cls: 'badge-hot' },
+    ai: {
+      fr: 'La <strong>Chambre d\'Amour</strong> est le quartier balnéaire iconique d\'Anglet, au nord de la ville. Directement accessible depuis la plage éponyme et ses rochers historiques, le secteur attire surfeurs, familles et touristes. Les appartements avec vue sur l\'océan Atlantic sont très recherchés en résidence secondaire, avec des <strong>rendements locatifs saisonniers</strong> parmi les meilleurs du BAB.',
+      en: '<strong>Chambre d\'Amour</strong> is Anglet\'s iconic seaside neighbourhood in the north of town. With direct access to its famous beach and historic rocks, the area draws surfers, families and tourists alike. Ocean-view apartments are highly sought after as holiday homes, delivering some of the <strong>best seasonal rental yields</strong> in the BAB conurbation.',
+      es: 'La <strong>Chambre d\'Amour</strong> es el icónico barrio costero de Anglet, al norte de la ciudad. Con acceso directo a la famosa playa y sus rocas históricas, el sector atrae a surfistas, familias y turistas. Los apartamentos con vistas al océano Atlántico son muy buscados como residencias de vacaciones, ofreciendo algunos de los <strong>mejores rendimientos de alquiler estacional</strong> del área BAB.',
+    },
+    scores: [[100],[55],[45],[92]],
+    nearby: [
+      { rue: 'AV DE LA CHAMBRE D\'AMOUR',  num: '3',  type: 'appt',   surface: 54,  floor: '3e',  pm2: 6300, date: '2025-03-25' },
+      { rue: 'BD DES PLAGES',              num: '18', type: 'appt',   surface: 70,  floor: '2e',  pm2: 5800, date: '2025-02-05' },
+      { rue: 'RUE DES CAVALIERS',          num: '7',  type: 'appt',   surface: 48,  floor: '1er', pm2: 5200, date: '2025-01-15' },
+    ]
+  },
+  {
+    id: 'quintaou',
+    name: { fr: 'Quintaou · Mairie',             en: 'Quintaou · Town Hall',            es: 'Quintaou · Ayuntamiento' },
+    zone: { fr: 'Anglet · Cœur de ville',        en: 'Anglet · Town centre',            es: 'Anglet · Centro ciudad' },
+    lat: 43.4875, lon: -1.5147,
+    price: 4300, median: 4000, tx: 91, evo: '+39', eLabel: '+39% (2019→2025)',
+    history: [3100, 3500, 4000, 4700, 4500, 4200, 4300],
+    years: ['2019','2020','2021','2022','2023','2024','2025'],
+    badge: { label: { fr: 'Marché dynamique', en: 'Dynamic market', es: 'Mercado dinámico' }, cls: 'badge-warm' },
+    ai: {
+      fr: '<strong>Quintaou · Mairie</strong> est le véritable cœur administratif et commercial d\'Anglet. La mairie, le centre commercial de Quintaou, les lignes de bus BAB et la rue principale concentrent ici la vie quotidienne angloyenne. Secteur le plus liquide de la ville avec <strong>91 transactions</strong> — idéal pour une résidence principale ou un investissement locatif longue durée.',
+      en: '<strong>Quintaou · Town Hall</strong> is Anglet\'s true administrative and commercial heart. The town hall, Quintaou shopping centre, BAB bus lines and the main street bring everyday life together here. The most liquid sector in town with <strong>91 transactions</strong> — ideal for a primary residence or long-term rental investment.',
+      es: '<strong>Quintaou · Ayuntamiento</strong> es el verdadero corazón administrativo y comercial de Anglet. El ayuntamiento, el centro comercial de Quintaou, las líneas de autobús BAB y la calle principal concentran aquí la vida cotidiana anglesa. El sector más líquido de la ciudad con <strong>91 transacciones</strong> — ideal para residencia principal o inversión en alquiler a largo plazo.',
+    },
+    scores: [[30],[100],[52],[82]],
+    nearby: [
+      { rue: 'AV DU QUINTAOU',             num: '22', type: 'appt',   surface: 67,  floor: '2e',  pm2: 4600, date: '2025-04-10' },
+      { rue: 'RUE DE MONTBRUN',            num: '5',  type: 'appt',   surface: 55,  floor: '1er', pm2: 4200, date: '2025-02-22' },
+      { rue: 'BD DU BAB',                  num: '34', type: 'maison', surface: 120, floor: null,  pm2: 3900, date: '2025-01-30' },
+    ]
+  },
+  {
+    id: 'blancpignon',
+    name: { fr: 'Blancpignon',                   en: 'Blancpignon',                     es: 'Blancpignon' },
+    zone: { fr: 'Anglet · Résidentiel nord',     en: 'Anglet · North residential',      es: 'Anglet · Residencial norte' },
+    lat: 43.5005, lon: -1.5285,
+    price: 3900, median: 3600, tx: 74, evo: '+36', eLabel: '+36% (2019→2025)',
+    history: [2900, 3200, 3600, 4300, 4100, 3800, 3900],
+    years: ['2019','2020','2021','2022','2023','2024','2025'],
+    badge: { label: { fr: 'En vogue', en: 'Trending', es: 'De moda' }, cls: 'badge-warm' },
+    ai: {
+      fr: '<strong>Blancpignon</strong> est le grand quartier résidentiel familial d\'Anglet, à mi-chemin entre les plages et le centre-ville. Maisons individuelles avec jardins, villas des années 70-80, résidences sécurisées — une offre variée qui attire les familles en quête d\'espace. À <strong>10 minutes à pied</strong> des plages des Corsaires et de Marinella, le secteur offre un excellent compromis qualité-prix dans l\'agglomération BAB.',
+      en: '<strong>Blancpignon</strong> is Anglet\'s large family residential neighbourhood, midway between the beaches and town centre. Detached houses with gardens, 1970s-80s villas, gated residences — a varied offer that attracts space-seeking families. Just <strong>10 minutes\' walk</strong> from Corsaires and Marinella beaches, the area offers excellent value in the BAB conurbation.',
+      es: '<strong>Blancpignon</strong> es el gran barrio residencial familiar de Anglet, a medio camino entre las playas y el centro. Casas individuales con jardín, villas de los años 70-80, residencias cerradas — una oferta variada que atrae a familias en busca de espacio. A tan solo <strong>10 minutos a pie</strong> de las playas de Corsaires y Marinella, el sector ofrece una excelente relación calidad-precio en el área BAB.',
+    },
+    scores: [[70],[62],[75],[72]],
+    nearby: [
+      { rue: 'RUE DE BLANCPIGNON',         num: '14', type: 'maison', surface: 142, floor: null,  pm2: 4200, date: '2025-03-08' },
+      { rue: 'ALLÉE DES CORSAIRES',        num: '6',  type: 'appt',   surface: 58,  floor: '2e',  pm2: 3900, date: '2025-01-28' },
+      { rue: 'RUE DU LAZARET',             num: '3',  type: 'appt',   surface: 44,  floor: 'RdC', pm2: 3600, date: '2025-02-14' },
+    ]
+  },
+  {
+    id: 'sutar-brindos',
+    name: { fr: 'Sutar · Brindos',               en: 'Sutar · Brindos',                 es: 'Sutar · Brindos' },
+    zone: { fr: 'Anglet · Sud verdoyant',         en: 'Anglet · Green south',            es: 'Anglet · Sur verde' },
+    lat: 43.4720, lon: -1.5080,
+    price: 3400, median: 3100, tx: 58, evo: '+33', eLabel: '+33% (2019→2025)',
+    history: [2600, 2800, 3200, 3800, 3600, 3300, 3400],
+    years: ['2019','2020','2021','2022','2023','2024','2025'],
+    badge: { label: { fr: 'Marché accessible', en: 'Accessible market', es: 'Mercado accesible' }, cls: 'badge-cool' },
+    ai: {
+      fr: '<strong>Sutar · Brindos</strong> est le secteur le plus calme et le plus vert d\'Anglet, aux portes de Bayonne et d\'Arcangues. Le lac de Brindos, ses jardins paisibles et l\'ancien château hôtel confèrent à ce secteur un charme rural rare à <strong>15 minutes du centre de Biarritz</strong>. Idéal pour les primo-accédants ou les familles cherchant de l\'espace à prix BAB le plus abordable.',
+      en: '<strong>Sutar · Brindos</strong> is Anglet\'s quietest and greenest area, at the gateway to Bayonne and Arcangues. Lake Brindos, its peaceful gardens and the historic château hotel give this area a rare rural charm just <strong>15 minutes from central Biarritz</strong>. Ideal for first-time buyers or families seeking space at the most affordable BAB prices.',
+      es: '<strong>Sutar · Brindos</strong> es el sector más tranquilo y verde de Anglet, a las puertas de Bayona y Arcangues. El lago de Brindos, sus tranquilos jardines y el antiguo château-hôtel confieren a este sector un encanto rural raro a tan solo <strong>15 minutos del centro de Biarritz</strong>. Ideal para compradores primerizos o familias que buscan espacio a los precios más asequibles del BAB.',
+    },
+    scores: [[18],[35],[98],[68]],
+    nearby: [
+      { rue: 'AV DE SUTAR',                num: '9',  type: 'maison', surface: 168, floor: null,  pm2: 3700, date: '2025-03-20' },
+      { rue: 'RUE DE BRINDOS',             num: '5',  type: 'maison', surface: 145, floor: null,  pm2: 3400, date: '2025-02-10' },
+      { rue: 'CHEMIN D\'HONDRITZ',         num: '3',  type: 'appt',   surface: 61,  floor: '1er', pm2: 3100, date: '2025-01-18' },
+    ]
+  }
+];
+
+let currentZone = null, currentGeo = null;
+let chartInstance = null;
+const isAGL = f => f?.properties?.citycode === AGL;
+
+// ── CHIPS ─────────────────────────────────────────────────────────────────────
+function analyzeZone(zoneId) {
+  const zone = ZONES.find(z => z.id === zoneId);
+  if (!zone) return;
+  document.getElementById('addressInput').value = '';
+  hideError();
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  document.getElementById('chip-' + zoneId)?.classList.add('active');
+  render(zone, { street: zone.name[LANG], numero: '', isChip: true });
+}
+
+// ── SAISIE LIBRE ──────────────────────────────────────────────────────────────
+async function analyzeInput() {
+  const addr = document.getElementById('addressInput').value.trim();
+  if (!addr) return;
+  document.getElementById('loader').classList.add('visible');
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('btnSearch').disabled = true;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  hideError();
+  try {
+    document.getElementById('loaderStep').textContent = t('loaderGeo');
+    const geo = await geocodeAnglet(addr);
+    document.getElementById('loaderStep').textContent = t('loaderAnalyze');
+    render(detectZone(geo.lat, geo.lon), geo);
+  } catch(e) { showError(e.message); }
+  finally {
+    document.getElementById('loader').classList.remove('visible');
+    document.getElementById('btnSearch').disabled = false;
+  }
+}
+
+// ── GÉOCODAGE ─────────────────────────────────────────────────────────────────
+async function geocodeAnglet(addr) {
+  let f = await banFirst(addr, true);
+  if (!f) f = await banFirst(addr, false);
+  if (!f) throw new Error(t('errNotFound'));
+  if (!isAGL(f)) throw new Error(t('errOtherCity')(f.properties.city || '?'));
+  return {
+    lat: f.geometry.coordinates[1], lon: f.geometry.coordinates[0],
+    label: f.properties.label,
+    street: f.properties.street || f.properties.name,
+    numero: f.properties.housenumber || '',
+    isChip: false
+  };
+}
+async function banFirst(q, useCitycode) {
+  const p = new URLSearchParams({ q, limit: 5 });
+  if (useCitycode) p.set('citycode', AGL);
+  const res = await fetch(`${BAN}?${p}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  return (data.features || []).find(isAGL) || null;
+}
+
+// ── VORONOI ───────────────────────────────────────────────────────────────────
+function haversine(la1,lo1,la2,lo2) {
+  const R=6371000, r=Math.PI/180, dla=(la2-la1)*r, dlo=(lo2-lo1)*r;
+  const a=Math.sin(dla/2)**2+Math.cos(la1*r)*Math.cos(la2*r)*Math.sin(dlo/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function detectZone(lat,lon) {
+  return ZONES.reduce((b,z)=>haversine(lat,lon,z.lat,z.lon)<haversine(lat,lon,b.lat,b.lon)?z:b);
+}
+
+// ── RENDU ─────────────────────────────────────────────────────────────────────
+function render(zone, geo) {
+  currentZone = zone; currentGeo = geo;
+  document.getElementById('streetName').textContent  = geo.isChip ? zone.name[LANG] : (geo.street || geo.label);
+  document.getElementById('streetSub').textContent   = zone.zone[LANG];
+  const b = document.getElementById('marketBadge');
+  b.textContent = zone.badge.label[LANG]; b.className = 'badge ' + zone.badge.cls;
+  document.getElementById('priceM2').textContent     = zone.price.toLocaleString('fr-FR');
+  document.getElementById('medianPrice').textContent = zone.median.toLocaleString('fr-FR');
+  document.getElementById('txCount').textContent     = zone.tx;
+  const evo = document.getElementById('evolution');
+  evo.textContent = zone.evo + '%';
+  evo.className = 'stat-value ' + (zone.evo.startsWith('+') ? 'trend-up' : 'trend-down');
+  document.getElementById('evolutionSub').textContent = zone.eLabel;
+  document.getElementById('aiText').innerHTML = zone.ai[LANG];
+
+  const scoreLabels = t('scoreLabels');
+  document.getElementById('scoreRow').innerHTML = zone.scores.map(([v], i) =>
+    `<div class="score-item"><div class="score-bar-bg"><div class="score-bar-fill" style="width:0%" data-t="${v}%"></div></div><div class="score-key">${scoreLabels[i]}</div></div>`
+  ).join('');
+  setTimeout(() => document.querySelectorAll('.score-bar-fill').forEach(el => el.style.width = el.dataset.t), 80);
+
+  const dateLoc = DATE_LOC[LANG];
+  const txList = geo.isChip ? zone.nearby : [
+    { rue: (geo.street || '').toUpperCase(), num: geo.numero || '—', type: 'appt', surface: null, floor: null, pm2: zone.price, date: '2025-06-01', isSearched: true },
+    ...zone.nearby.filter(tx => tx.rue !== (geo.street || '').toUpperCase()).slice(0, 2)
+  ];
+
+  document.getElementById('sampleList').innerHTML = txList.map(tx => {
+    const d    = new Date(tx.date).toLocaleDateString(dateLoc, { month: 'short', year: 'numeric' });
+    const addr = (tx.num && tx.num !== '—' ? tx.num + ' ' : '') + tx.rue;
+    const ytag = tx.isSearched ? `<span class="you-tag">${t('youTag')}</span>` : '';
+    const typeLabel = t(tx.type);
+    const surfaceMeta = tx.surface ? `<span class="sample-meta"><i class="ti ti-arrows-diagonal"></i>${tx.surface} m²</span>` : '';
+    const floorMeta   = tx.floor   ? `<span class="sample-meta"><i class="ti ti-stairs"></i>${tx.floor}</span>` : '';
+    const dateMeta    = `<span class="sample-meta">${d}</span>`;
+    return `<div class="${tx.isSearched ? 'sample-item searched' : 'sample-item'}">
+      <div class="sample-row1">
+        <span class="sample-addr">${addr}${ytag} <em style="font-size:10px;color:var(--text-tertiary);font-weight:400">${typeLabel}</em></span>
+        <span class="sample-price">${tx.pm2.toLocaleString('fr-FR')} €/m²</span>
+      </div>
+      <div class="sample-row2">${surfaceMeta}${floorMeta}${dateMeta}</div>
+    </div>`;
+  }).join('');
+
+  renderChart(zone.history, zone.years);
+  document.getElementById('results').classList.add('visible');
+}
+
+function renderChart(history, years) {
+  if (chartInstance) chartInstance.destroy();
+  document.getElementById('chartContainer').innerHTML = '<canvas id="priceChart"></canvas>';
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  chartInstance = new Chart(document.getElementById('priceChart'), {
+    type: 'line',
+    data: { labels: years, datasets: [{ data: history, borderColor: '#1A7A6E',
+      backgroundColor: dark ? 'rgba(26,122,110,.12)' : 'rgba(26,122,110,.07)',
+      borderWidth: 2.5, pointBackgroundColor: '#1A7A6E', pointRadius: 5, pointHoverRadius: 7, fill: true, tension: 0.38 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + c.parsed.y.toLocaleString('fr-FR') + ' €/m²' } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { font: { size: 11 }, color: dark ? '#6b6763' : '#9b9b9b' } },
+        y: { grid: { color: dark ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.04)' },
+             ticks: { font: { size: 11 }, color: dark ? '#6b6763' : '#9b9b9b', callback: v => v.toLocaleString('fr-FR') + ' €' } }
+      }
+    }
+  });
+}
+
+function showError(msg) { const e = document.getElementById('errorCard'); e.innerHTML = '<i class="ti ti-alert-circle" style="margin-right:6px"></i>' + msg; e.classList.add('visible'); }
+function hideError() { document.getElementById('errorCard').classList.remove('visible'); }
+
+// ── AUTOCOMPLETE ──────────────────────────────────────────────────────────────
+const input = document.getElementById('addressInput'), dropdown = document.getElementById('acDropdown');
+let acResults = [], acIndex = -1, acTimer = null;
+input.addEventListener('input', () => {
+  clearTimeout(acTimer); const q = input.value.trim();
+  if (q.length < 3) { closeDropdown(); return; }
+  acTimer = setTimeout(() => fetchSuggestions(q), 220);
+});
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { acIndex >= 0 && acResults[acIndex] ? selectSuggestion(acResults[acIndex]) : (closeDropdown(), analyzeInput()); return; }
+  if (e.key === 'ArrowDown') { e.preventDefault(); moveIndex(1); }
+  if (e.key === 'ArrowUp')   { e.preventDefault(); moveIndex(-1); }
+  if (e.key === 'Escape')    { closeDropdown(); }
+});
+document.addEventListener('click', e => { if (!e.target.closest('.autocomplete-wrap')) closeDropdown(); });
+async function fetchSuggestions(q) {
+  try {
+    const res = await fetch(`${BAN}?${new URLSearchParams({ q, citycode: AGL, limit: 6 })}`);
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    acResults = (data.features || []).filter(isAGL);
+    renderDropdown();
+  } catch(e) { closeDropdown(); }
+}
+function renderDropdown() {
+  if (!acResults.length) { closeDropdown(); return; }
+  acIndex = -1;
+  dropdown.innerHTML = acResults.map((f, i) => { const p = f.properties;
+    return `<div class="ac-item" data-i="${i}"><i class="ti ti-map-pin"></i><div><div class="ac-main">${p.name || p.street}</div><div class="ac-sub">${p.postcode} ${p.city}</div></div></div>`;
+  }).join('');
+  dropdown.querySelectorAll('.ac-item').forEach(el => el.addEventListener('mousedown', e => { e.preventDefault(); selectSuggestion(acResults[+el.dataset.i]); }));
+  dropdown.classList.add('open');
+}
+function moveIndex(dir) {
+  const items = dropdown.querySelectorAll('.ac-item'); if (!items.length) return;
+  items[acIndex]?.classList.remove('active');
+  acIndex = Math.max(-1, Math.min(items.length - 1, acIndex + dir));
+  if (acIndex >= 0) { items[acIndex].classList.add('active'); input.value = acResults[acIndex].properties.label; }
+}
+function selectSuggestion(f) { input.value = f.properties.label; closeDropdown(); analyzeInput(); }
+function closeDropdown() { dropdown.classList.remove('open'); acResults = []; acIndex = -1; }
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+setLang('fr');
+</script>
+</body>
+</html>
