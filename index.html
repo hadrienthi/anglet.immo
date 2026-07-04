@@ -3,653 +3,689 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Anglet.immo — Thermomètre immobilier</title>
+<title>Prix immobilier Anglet 2025 : thermomètre par quartier | Anglet.immo</title>
+<meta name="description" content="Consultez les prix au m² à Anglet en 2025 par quartier : Chiberta, Chambre d'Amour, Cinq-Cantons, Blancpignon, Brindos, Quintaou. Données DVF officielles DGFiP/Cerema 2019–2025. Estimation gratuite." />
+<link rel="canonical" href="https://anglet.immo/" />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://anglet.immo/" />
+<meta property="og:title" content="Prix immobilier Anglet 2025 : thermomètre par quartier" />
+<meta property="og:description" content="Prix au m² à Anglet par quartier, données DVF officielles. Estimation gratuite." />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Anglet.immo · Prix immobilier","url":"https://anglet.immo/","description":"Observatoire des prix immobiliers à Anglet (64600) par quartier, basé sur les données DVF de la DGFiP, avec estimation gratuite.","applicationCategory":"RealEstateApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"areaServed":{"@type":"City","name":"Anglet","postalCode":"64600","addressCountry":"FR"},"publisher":{"@type":"Organization","name":"Anglet.immo","url":"https://anglet.immo/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.8.0/dist/tabler-icons.min.css" />
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --teal: #1A7A6E; --teal-light: #E3F4F2; --teal-dark: #0F5249;
-  --purple-light: #EEEDFE; --purple: #534AB7;
-  --amber-light: #FAEEDA; --amber: #854F0B;
-  --green-light: #EAF3DE; --green: #3B6D11;
-  --text: #1a1a1a; --text-secondary: #6b6b6b; --text-tertiary: #9b9b9b;
-  --bg: #f4f6f5; --surface: #ffffff; --border: rgba(0,0,0,0.10);
-  --radius-md: 10px; --radius-lg: 14px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--red:#A31621;--red-dark:#7E0F18;--red-light:#C21B28;--rose:#E8B4B8;
+--cream:#FAF5EC;--ink:#221B16;
+--hairline:rgba(34,27,22,0.14);--hairline-soft:rgba(34,27,22,0.12);
+--coral:#A31621;--coral-dark:#7E0F18;--coral-light:rgba(163,22,33,0.09);
+--text:#221B16;--text-secondary:rgba(34,27,22,0.75);--text-tertiary:rgba(34,27,22,0.5);
+--bg:#FAF5EC;--surface:#FAF5EC;--border:rgba(34,27,22,0.14);
+--radius-md:4px;--radius-lg:6px;
+--serif:'Instrument Serif',Georgia,serif;--mono:'Spline Sans Mono',ui-monospace,monospace;
+--gutter:clamp(20px,5vw,64px);--section:clamp(64px,9vw,120px)
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #f0ede8; --text-secondary: #a8a49e; --text-tertiary: #6b6763;
-    --bg: #171a19; --surface: #212422; --border: rgba(255,255,255,0.10);
-    --teal-light: rgba(26,122,110,0.18); --purple-light: rgba(83,74,183,0.18);
-    --amber-light: rgba(133,79,11,0.18); --green-light: rgba(59,109,17,0.18);
-  }
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  background: var(--bg); color: var(--text);
-  min-height: 100vh; display: flex; flex-direction: column; align-items: center;
-  padding: 2rem 1rem 4rem;
-}
-.app { width: 100%; max-width: 420px; }
-.header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
-.logo { display: flex; align-items: center; gap: 10px; }
-.logo-dot { width: 32px; height: 32px; border-radius: 8px; background: var(--teal); display: flex; align-items: center; justify-content: center; }
-.logo-dot i { color: white; font-size: 16px; }
-.logo-text { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
-.logo-text span { color: var(--teal); }
-.header-right { display: flex; align-items: center; gap: 8px; }
-.lang-switcher { display: flex; gap: 2px; background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; padding: 2px; }
-.lang-btn { font-size: 11px; font-weight: 600; padding: 4px 8px; border: none; background: transparent; color: var(--text-tertiary); cursor: pointer; border-radius: 6px; transition: all 0.15s; font-family: inherit; letter-spacing: 0.3px; }
-.lang-btn:hover { color: var(--text); }
-.lang-btn.active { background: var(--surface); color: var(--teal); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-.search-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
-.search-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: block; }
-.search-row { display: flex; gap: 8px; align-items: flex-start; }
-.autocomplete-wrap { position: relative; flex: 1; min-width: 0; }
-.autocomplete-wrap input { display: block; width: 100%; height: 42px; padding: 0 12px; font-size: 14px; border-radius: var(--radius-md); border: 0.5px solid var(--border); background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; font-family: inherit; }
-.autocomplete-wrap input:focus { border-color: var(--teal); }
-.autocomplete-wrap input::placeholder { color: var(--text-tertiary); }
-.autocomplete-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 100; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-.autocomplete-dropdown.open { display: block; }
-.ac-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-size: 13px; border-bottom: 0.5px solid var(--border); transition: background 0.1s; }
-.ac-item:last-child { border-bottom: none; }
-.ac-item:hover, .ac-item.active { background: var(--bg); }
-.ac-item i { font-size: 14px; color: var(--teal); flex-shrink: 0; }
-.ac-main { color: var(--text); }
-.ac-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
-.btn-search { height: 42px; padding: 0 18px; background: var(--teal); color: white; border: none; border-radius: var(--radius-md); font-size: 13px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: opacity 0.15s; }
-.btn-search:hover { opacity: 0.85; }
-.btn-search:disabled { opacity: 0.5; cursor: not-allowed; }
-.suggestions-label { font-size: 11px; color: var(--text-tertiary); margin-top: 12px; margin-bottom: 6px; }
-.suggestions { display: flex; gap: 6px; flex-wrap: wrap; }
-.chip { font-size: 11px; padding: 5px 11px; background: var(--bg); border: 0.5px solid var(--border); border-radius: 20px; color: var(--text-secondary); cursor: pointer; transition: all 0.1s; white-space: nowrap; }
-.chip:hover { background: var(--surface); color: var(--text); border-color: var(--teal); }
-.chip.active { background: var(--teal-light); color: var(--teal-dark); border-color: var(--teal); }
-.loader { display: none; flex-direction: column; align-items: center; gap: 12px; padding: 2.5rem 0; }
-.loader.visible { display: flex; }
-.dot-pulse { display: flex; gap: 5px; }
-.dot-pulse span { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 1.2s ease-in-out infinite; }
-.dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
-.dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
-@keyframes pulse { 0%,80%,100%{opacity:.2;transform:scale(.8)} 40%{opacity:1;transform:scale(1)} }
-.loader-step { font-size: 12px; color: var(--text-tertiary); }
-.result-section { display: none; animation: fadeUp 0.4s ease; }
-.result-section.visible { display: block; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.error-card { background: var(--surface); border: 0.5px solid rgba(26,122,110,0.3); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; color: var(--teal-dark); font-size: 13px; display: none; }
-.error-card.visible { display: block; }
-.street-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 1rem; }
-.street-name { font-size: 16px; font-weight: 600; }
-.street-sub { font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
-.badge { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 500; white-space: nowrap; }
-.badge-hot  { background: var(--teal-light);  color: var(--teal-dark); }
-.badge-warm { background: var(--amber-light); color: var(--amber); }
-.badge-cool { background: var(--green-light); color: var(--green); }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
-.stat-card { background: var(--bg); border-radius: var(--radius-md); padding: 14px; }
-.stat-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
-.stat-label i { font-size: 14px; }
-.stat-value { font-size: 24px; font-weight: 600; line-height: 1; }
-.stat-unit { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
-.trend-up { color: var(--green); }
-.trend-down { color: var(--teal-dark); }
-.chart-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
-.chart-title { font-size: 12px; color: var(--text-secondary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
-.ai-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
-.ai-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.ai-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; }
-.ai-icon i { color: var(--purple); font-size: 15px; }
-.ai-label { font-size: 14px; font-weight: 500; }
-.ai-sublabel { font-size: 11px; color: var(--text-secondary); margin-top: 1px; }
-.ai-text { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
-.ai-text strong { color: var(--text); font-weight: 500; }
-.score-row { display: flex; gap: 8px; margin-top: 14px; }
-.score-item { flex: 1; }
-.score-bar-bg { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 5px; overflow: hidden; }
-.score-bar-fill { height: 100%; border-radius: 2px; background: var(--teal); transition: width 0.9s cubic-bezier(.4,0,.2,1); }
-.score-key { font-size: 10px; color: var(--text-tertiary); }
-.sample-list { margin-top: 12px; border-top: 0.5px solid var(--border); padding-top: 12px; }
-.sample-item { padding: 8px 0; border-bottom: 0.5px solid var(--border); }
-.sample-item:last-child { border-bottom: none; }
-.sample-item.searched { background: var(--teal-light); margin: 0 -12px; padding: 8px 12px; border-radius: 6px; }
-.sample-row1 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.sample-row2 { display: flex; gap: 10px; margin-top: 3px; }
-.sample-addr { font-size: 12px; font-weight: 500; color: var(--text); }
-.sample-addr .you-tag { font-size: 10px; background: var(--teal); color: white; border-radius: 4px; padding: 1px 5px; margin-left: 4px; vertical-align: middle; font-weight: 400; }
-.sample-price { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; }
-.sample-meta { font-size: 11px; color: var(--text-tertiary); display: flex; align-items: center; gap: 4px; }
-.sample-meta i { font-size: 11px; }
-.dvf-note { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-tertiary); }
-.dvf-note i { font-size: 13px; }
-.dvf-note a { color: var(--text-tertiary); }
-footer { margin-top: 3rem; text-align: center; font-size: 11px; color: var(--text-tertiary); }
+::selection{background:var(--red);color:var(--cream)}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',-apple-system,sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto}
+.mono{font-family:var(--mono)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+/* ===== NAV ===== */
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;row-gap:12px;column-gap:24px;padding:16px var(--gutter);border-bottom:1px solid var(--hairline-soft);background:var(--cream);position:sticky;top:0;z-index:50}
+.wordmark{font-family:var(--serif);font-size:26px;letter-spacing:-0.01em;color:var(--ink);text-decoration:none}
+.wordmark em{font-style:italic;color:var(--red)}
+.nav-right{display:flex;flex-wrap:wrap;align-items:center;row-gap:10px;column-gap:clamp(14px,2.4vw,28px);font-size:14px;font-weight:500}
+.nav-right a.nl{color:var(--ink);text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px}
+.nav-right a.nl:hover{border-bottom-color:var(--red)}
+.lang-switcher{display:flex;gap:4px;font-family:var(--mono);font-size:12px;letter-spacing:0.06em}
+.lang-btn{background:none;border:none;cursor:pointer;font-family:var(--mono);font-size:12px;color:rgba(34,27,22,0.55);padding:2px 3px}
+.lang-btn:hover{color:var(--ink)}
+.lang-btn.active{color:var(--red);font-weight:500}
+.nav-cta{background:var(--red);color:var(--cream);text-decoration:none;padding:11px 22px;border-radius:999px;font-weight:600;font-size:14px}
+.nav-cta:hover{background:var(--red-dark)}
+/* ===== HERO ===== */
+.hero{background:var(--cream);color:var(--ink);padding:clamp(36px,5.5vw,68px) var(--gutter) 0;position:relative;overflow:hidden}
+.hero-kicker{font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1.04;margin:0 0 20px;letter-spacing:-0.015em;max-width:18ch;text-wrap:balance}
+.hero p{font-size:clamp(15px,1.5vw,18px);line-height:1.6;max-width:54ch;margin:0 0 36px;color:var(--text-secondary)}
+.hero-figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1px solid var(--hairline)}
+.hero-fig{padding:24px 24px 34px 0;border-right:1px solid var(--hairline)}
+.hero-fig+.hero-fig{padding-left:24px}
+.hero-fig:last-child{border-right:none;padding-right:0}
+.hero-fig .v{font-family:var(--serif);font-size:clamp(32px,3.2vw,46px);line-height:1;color:var(--red)}
+.hero-fig .l{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;margin-top:10px;color:var(--text-tertiary)}
+.stripes{height:14px;background:repeating-linear-gradient(90deg,#FAF5EC 0px,#FAF5EC 34px,#7E0F18 34px,#7E0F18 40px,#FAF5EC 40px,#FAF5EC 46px,#7E0F18 46px,#7E0F18 52px,#FAF5EC 52px,#FAF5EC 86px);margin:0 calc(-1 * var(--gutter))}
+/* ===== THERMOMÈTRE ===== */
+.section-q{padding:var(--section) var(--gutter)}
+.thermo-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.thermo-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.4vw,56px);line-height:1.05;letter-spacing:-0.01em}
+.sort-btn{font-family:'Archivo',sans-serif;font-size:13px;font-weight:600;padding:10px 18px;border-radius:999px;cursor:pointer;background:transparent;color:var(--ink);border:1px solid rgba(34,27,22,0.3)}
+.sort-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+/* recherche adresse */
+.search-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px}
+.search-label{flex-basis:100%;font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:2px}
+.autocomplete-wrap{position:relative;flex:1;min-width:230px}
+.autocomplete-wrap input{display:block;width:100%;height:48px;padding:0 16px;font-size:15px;font-family:'Archivo',sans-serif;border-radius:4px;border:1px solid rgba(34,27,22,0.3);background:var(--cream);color:var(--ink);outline:none}
+.autocomplete-wrap input:focus{border-color:var(--red)}
+.autocomplete-wrap input::placeholder{color:var(--text-tertiary)}
+.autocomplete-dropdown{display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:100;background:var(--cream);border:1px solid var(--hairline);border-radius:4px;overflow:hidden;box-shadow:0 10px 30px rgba(34,27,22,0.12)}
+.autocomplete-dropdown.open{display:block}
+.ac-item{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;font-size:14px;border-bottom:1px solid var(--hairline-soft)}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover,.ac-item.active{background:rgba(163,22,33,0.05)}
+.ac-item i{font-size:14px;color:var(--red);flex-shrink:0}
+.ac-main{color:var(--ink)}
+.ac-sub{font-family:var(--mono);font-size:11px;color:var(--text-tertiary);margin-top:1px}
+.btn-search{height:48px;padding:0 24px;background:var(--red);color:var(--cream);border:none;border-radius:4px;font-size:14px;font-weight:600;font-family:'Archivo',sans-serif;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-search:hover{background:var(--red-light)}
+.btn-search:disabled{opacity:0.5;cursor:not-allowed}
+/* lignes du thermomètre */
+.thermo-row{display:flex;flex-wrap:wrap;align-items:center;row-gap:14px;column-gap:clamp(12px,2.5vw,32px);padding:26px 0;border-top:1px solid var(--hairline);cursor:pointer;transition:background 0.15s}
+.thermo-row:hover{background:rgba(163,22,33,0.04)}
+.thermo-row.active{background:rgba(163,22,33,0.06)}
+.tr-left{flex:1 1 220px;display:flex;align-items:center;gap:clamp(12px,2vw,24px);min-width:0}
+.tr-rank{font-family:var(--serif);font-style:italic;font-size:28px;color:rgba(34,27,22,0.35);flex-shrink:0;width:34px}
+.tr-nom{font-weight:600;font-size:17px;margin-bottom:4px}
+.tr-note{font-size:13px;color:rgba(34,27,22,0.6);line-height:1.4}
+.tr-bar{flex:3 1 240px;height:34px;background:rgba(34,27,22,0.07);border-radius:3px;position:relative;overflow:hidden}
+.tr-fill{position:absolute;top:0;bottom:0;left:0;border-radius:3px;transition:width 0.6s cubic-bezier(0.2,0.8,0.2,1)}
+.tr-right{flex:0 1 auto;margin-left:auto;display:flex;align-items:center;gap:clamp(12px,2vw,24px)}
+.tr-prix{font-family:var(--serif);font-size:clamp(24px,2.4vw,32px);text-align:right;white-space:nowrap}
+.tr-evo{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--red);background:rgba(163,22,33,0.09);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.thermo-foot{display:flex;justify-content:space-between;gap:16px;margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--text-tertiary);flex-wrap:wrap}
+/* loader / erreur */
+.loader{display:none;flex-direction:column;align-items:center;gap:12px;padding:2.5rem 0}
+.loader.visible{display:flex}
+.dot-pulse{display:flex;gap:5px}
+.dot-pulse span{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.2s ease-in-out infinite}
+.dot-pulse span:nth-child(2){animation-delay:0.2s}
+.dot-pulse span:nth-child(3){animation-delay:0.4s}
+@keyframes pulse{0%,80%,100%{opacity:.2;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+.loader-step{font-family:var(--mono);font-size:12px;color:var(--text-tertiary)}
+.error-card{display:none;border:1px solid rgba(163,22,33,0.4);border-radius:4px;padding:16px 18px;margin-top:34px;color:var(--red-dark);font-size:14px}
+.error-card.visible{display:block}
+/* ===== PANNEAU DÉTAIL QUARTIER ===== */
+.result-section{display:none;animation:fadeUp 0.4s ease;margin-top:56px;padding-top:44px;border-top:1px solid var(--hairline)}
+.result-section.visible{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.street-header{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.street-name{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);line-height:1.05}
+.street-sub{font-family:var(--mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary);margin-top:8px}
+.badge{font-family:var(--mono);font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.badge-hot{color:var(--red);background:rgba(163,22,33,0.09)}
+.badge-warm{color:#8a5a2a;background:rgba(138,90,42,0.1)}
+.badge-cool{color:rgba(34,27,22,0.65);background:rgba(34,27,22,0.07)}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,36px);align-items:start}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+.stat-card{background:var(--cream);padding:26px 24px}
+.stat-label{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.stat-label i{font-size:14px;color:var(--red)}
+.stat-value{font-family:var(--serif);font-size:clamp(30px,3vw,44px);line-height:1}
+.stat-unit{font-family:var(--mono);font-size:11px;color:var(--text-tertiary);margin-top:8px}
+.trend-up{color:var(--ink)}
+.trend-down{color:var(--red)}
+.chart-card{border:1px solid var(--hairline);padding:24px;margin-top:20px}
+.chart-title{font-family:var(--mono);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.tx-header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:0}
+.tx-source{font-family:var(--mono);font-size:11px;color:var(--text-tertiary)}
+.sample-list{margin-top:10px}
+.sample-item{padding:12px 0;border-bottom:1px solid var(--hairline-soft)}
+.sample-item:last-of-type{border-bottom:none}
+.sample-row1{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sample-row2{display:flex;gap:12px;margin-top:3px}
+.sample-addr{font-size:14px;font-weight:600;color:var(--ink)}
+.sample-addr em{font-family:var(--mono);font-weight:400;font-style:normal;font-size:11px;color:var(--text-tertiary)}
+.sample-price{font-family:var(--serif);font-size:18px;color:var(--ink);white-space:nowrap}
+.sample-meta{font-family:var(--mono);font-size:11px;color:var(--text-tertiary);display:flex;align-items:center;gap:4px}
+.sample-meta i{font-size:12px}
+.tx-loading{display:flex;align-items:center;gap:8px;padding:14px 0;font-size:12px;color:var(--text-tertiary)}
+.mini-dots span{width:4px;height:4px;border-radius:50%;background:var(--red);animation:pulse 1.2s ease-in-out infinite;display:inline-block;margin-right:2px}
+.btn-voir-plus{display:flex;align-items:center;gap:5px;margin-top:12px;padding:7px 0;font-size:13px;color:var(--red);background:none;border:none;cursor:pointer;font-family:'Archivo',sans-serif;font-weight:600}
+.btn-voir-plus:hover{opacity:0.7}
+.ai-card{border:1px solid var(--hairline);padding:28px;margin-top:20px}
+.ai-label{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--red)}
+.ai-sublabel{font-family:var(--mono);font-size:11px;color:var(--text-tertiary);margin-top:4px}
+.ai-header{margin-bottom:14px}
+.ai-text{font-size:15px;color:var(--text-secondary);line-height:1.65}
+.ai-text strong{color:var(--ink);font-weight:600}
+.score-row{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap}
+.score-item{flex:1;min-width:80px}
+.score-bar-bg{height:4px;background:rgba(34,27,22,0.1);border-radius:2px;margin-bottom:6px;overflow:hidden}
+.score-bar-fill{height:100%;border-radius:2px;background:var(--red);transition:width 0.9s cubic-bezier(.4,0,.2,1)}
+.score-key{font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-tertiary)}
+.dvf-note{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--text-tertiary);margin-top:28px}
+.dvf-note a{color:var(--text-tertiary)}
+.dvf-note i{color:var(--red)}
+/* ===== ESTIMATION (carte encre) ===== */
+.section-est{padding:0 var(--gutter) var(--section)}
+.est-card{background:var(--ink);color:var(--cream);border-radius:6px;padding:clamp(44px,6vw,88px) clamp(28px,5vw,80px);position:relative;overflow:hidden}
+.est-stripes{position:absolute;top:0;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,transparent 0px,transparent 34px,#A31621 34px,#A31621 40px,transparent 40px,transparent 46px,#A31621 46px,#A31621 52px,transparent 52px,transparent 86px)}
+.est-grid-top{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,72px);align-items:start}
+.est-card h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.08;margin:0 0 18px;letter-spacing:-0.01em}
+.est-card h2 em{color:var(--rose);font-style:italic}
+.est-lead{font-size:16px;line-height:1.6;color:rgba(250,245,236,0.75);max-width:46ch}
+.est-form-col{display:flex;flex-direction:column;gap:12px}
+#estCard input[type="text"],#estCard input[type="number"],#estCard input[type="email"],#estCard select{background:rgba(250,245,236,0.08);border:1px solid rgba(250,245,236,0.3);border-radius:4px;padding:16px 18px;font-family:'Archivo',sans-serif;font-size:15px;color:var(--cream);outline:none;width:100%}
+#estCard input:focus,#estCard select:focus{border-color:var(--cream)}
+#estCard input::placeholder{color:rgba(250,245,236,0.45)}
+#estCard select option{background:#221B16;color:#FAF5EC}
+#estCard .autocomplete-dropdown{background:#2b2320;border-color:rgba(250,245,236,0.25)}
+#estCard .ac-item{border-color:rgba(250,245,236,0.12)}
+#estCard .ac-item:hover,#estCard .ac-item.active{background:rgba(250,245,236,0.08)}
+#estCard .ac-main{color:var(--cream)}
+#estCard .ac-sub{color:rgba(250,245,236,0.5)}
+.est-cta{background:var(--red);color:var(--cream);border:none;border-radius:4px;padding:18px 20px;font-family:'Archivo',sans-serif;font-size:16px;font-weight:600;cursor:pointer;width:100%}
+.est-cta:hover{background:var(--red-light)}
+.est-cta:disabled{opacity:0.6;cursor:not-allowed}
+.est-mention{font-family:var(--mono);font-size:12px;color:rgba(250,245,236,0.5);text-align:center}
+#estDetails{display:none}
+.est-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:4px 0 2px}
+.est-field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,245,236,0.55);margin-bottom:6px}
+.est-field input,.est-field select{padding:12px 14px!important;font-size:14px!important}
+.est-check{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(250,245,236,0.75);padding-top:20px}
+.est-check input{width:auto!important}
+.est-note{font-family:var(--mono);font-size:10px;color:rgba(250,245,236,0.45);line-height:1.6;margin-top:6px}
+.est-result{text-align:center;padding:22px 0 4px;border-top:1px solid rgba(250,245,236,0.2);margin-top:16px}
+.est-result .stat-label{justify-content:center;color:rgba(250,245,236,0.55)}
+.est-value{font-family:var(--serif);font-size:clamp(38px,4vw,52px);color:var(--cream);line-height:1.1}
+.est-range{font-family:var(--mono);font-size:12px;color:rgba(250,245,236,0.6);margin-top:8px;line-height:1.6}
+.est-pdf-row{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.est-pdf-row input{flex:1;min-width:200px}
+.est-pdf-row .btn-search{height:auto;padding:14px 20px;border-radius:4px}
+#estDirect{color:var(--rose);margin:14px auto 0;font-weight:600}
+#estErr{color:var(--rose)}
+/* ===== MÉTHODE ===== */
+.section-m{padding:0 var(--gutter) clamp(72px,10vw,130px)}
+.section-m h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.8vw,48px);line-height:1.08;margin:0 0 44px;letter-spacing:-0.01em;max-width:22ch}
+.method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+.method-cell{background:var(--cream);padding:32px 28px}
+.method-cell .mt{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--red);margin-bottom:12px}
+.method-cell p{font-size:15px;line-height:1.6;color:var(--text-secondary)}
+/* ===== FOOTER ===== */
+.footer{background:var(--ink);color:var(--cream);padding:40px var(--gutter)}
+.footer-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.footer .wordmark{color:var(--cream);font-size:22px}
+.footer .wordmark em{color:var(--cream)}
+.footer-links{display:flex;gap:24px;font-family:var(--mono);font-size:13px}
+.footer-links a{color:rgba(250,245,236,0.85);text-decoration:none}
+.footer-links a:hover{color:var(--cream);text-decoration:underline}
+.footer-data{font-family:var(--mono);font-size:12px;color:rgba(250,245,236,0.6)}
+.seo-content{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+#chartContainer{position:relative;width:100%;height:220px}
+@media(min-width:900px){#chartContainer{height:260px}}
 </style>
 </head>
 <body>
-<div class="app">
-  <header class="header">
-    <div class="logo">
-      <div class="logo-dot"><i class="ti ti-home"></i></div>
-      <div class="logo-text">Anglet<span>.immo</span></div>
-    </div>
-    <div class="header-right">
-      <div class="lang-switcher">
-        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
-        <button class="lang-btn"        onclick="setLang('en')">EN</button>
-        <button class="lang-btn"        onclick="setLang('es')">ES</button>
-      </div>
-    </div>
-  </header>
+<h1 class="seo-content">Prix immobilier à Anglet (64600) : thermomètre par quartier et estimation gratuite</h1>
+<section class="seo-content" aria-hidden="true">
+<h2>Prix immobilier par quartier à Anglet en 2025</h2>
+<article><h3>Chiberta</h3><p>Appartements : prix moyen 7 987 €/m² (2024–2025). Évolution 2019–2025 : +44 %.</p></article>
+<article><h3>Chambre d'Amour</h3><p>Appartements : prix moyen 6 762 €/m² (2024–2025). Évolution 2019–2025 : +15 %.</p></article>
+<article><h3>Cinq-Cantons</h3><p>Appartements : prix moyen 5 729 €/m² (2024–2025). Évolution 2019–2025 : +45 %.</p></article>
+<article><h3>Blancpignon</h3><p>Appartements : prix moyen 5 500 €/m² (2024–2025). Évolution 2019–2025 : +23 %.</p></article>
+<article><h3>Brindos</h3><p>Appartements : prix moyen 4 973 €/m² (2024–2025). Évolution 2019–2025 : +29 %.</p></article>
+<article><h3>Quintaou · Mairie</h3><p>Appartements : prix moyen 4 744 €/m² (2024–2025). Évolution 2019–2025 : +30 %.</p></article>
+<h2>Prix des maisons à Anglet</h2>
+<p>Prix moyen des maisons (2024–2025) : Chiberta 10 791 €/m², Chambre d'Amour 10 122 €/m², Cinq-Cantons 7 135 €/m², Blancpignon 6 431 €/m², Brindos 5 679 €/m², Quintaou · Mairie 6 739 €/m². Moyenne ville : 7 612 €/m².</p>
+<h2>Estimation immobilière gratuite à Anglet</h2>
+<p>Estimez gratuitement votre appartement ou maison à Anglet à partir des ventes réelles DVF de votre quartier.</p>
+</section>
 
-  <div class="search-card">
-    <span class="search-label" data-i18n="searchLabel"></span>
-    <div class="search-row">
-      <div class="autocomplete-wrap">
-        <input type="text" id="addressInput" autocomplete="off" />
-        <div class="autocomplete-dropdown" id="acDropdown"></div>
-      </div>
-      <button class="btn-search" id="btnSearch" onclick="analyzeInput()">
-        <i class="ti ti-search"></i> <span data-i18n="btnSearch"></span>
-      </button>
-    </div>
-    <div class="suggestions-label" data-i18n="chipsLabel"></div>
-    <div class="suggestions">
-      <div class="chip" id="chip-chiberta"          onclick="analyzeZone('chiberta')"><span data-i18n="chip_chiberta"></span></div>
-      <div class="chip" id="chip-chambre-amour"     onclick="analyzeZone('chambre-amour')"><span data-i18n="chip_chambre-amour"></span></div>
-      <div class="chip" id="chip-quintaou"          onclick="analyzeZone('quintaou')"><span data-i18n="chip_quintaou"></span></div>
-      <div class="chip" id="chip-blancpignon"       onclick="analyzeZone('blancpignon')"><span data-i18n="chip_blancpignon"></span></div>
-      <div class="chip" id="chip-sutar-brindos"     onclick="analyzeZone('sutar-brindos')"><span data-i18n="chip_sutar-brindos"></span></div>
-    </div>
-  </div>
+<header class="nav">
+<a class="wordmark" href="https://anglet.immo/">Anglet<em>.immo</em></a>
+<nav class="nav-right">
+<a class="nl" href="#quartiers" data-i18n="navQuartiers"></a>
+<a class="nl" href="#methode" data-i18n="navMethode"></a>
+<span class="lang-switcher">
+<button class="lang-btn active" onclick="setLang('fr')">FR</button><span style="color:rgba(34,27,22,0.3)">·</span><button class="lang-btn" onclick="setLang('en')">EN</button><span style="color:rgba(34,27,22,0.3)">·</span><button class="lang-btn" onclick="setLang('es')">ES</button>
+</span>
+<a class="nav-cta" href="#estimation" data-i18n="navCta"></a>
+</nav>
+</header>
 
-  <div class="loader" id="loader">
-    <div class="dot-pulse"><span></span><span></span><span></span></div>
-    <div class="loader-step" id="loaderStep"></div>
-  </div>
-  <div class="error-card" id="errorCard"></div>
-
-  <div class="result-section" id="results">
-    <div class="street-header">
-      <div>
-        <div class="street-name" id="streetName">—</div>
-        <div class="street-sub" id="streetSub">—</div>
-      </div>
-      <span class="badge" id="marketBadge">—</span>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-label"><i class="ti ti-trending-up"></i> <span data-i18n="statPrice"></span></div>
-        <div class="stat-value" id="priceM2">—</div>
-        <div class="stat-unit" data-i18n="statPriceUnit"></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label"><i class="ti ti-arrow-up-right"></i> <span data-i18n="statEvo"></span></div>
-        <div class="stat-value" id="evolution" style="font-size:20px">—</div>
-        <div class="stat-unit" id="evolutionSub">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label"><i class="ti ti-home"></i> <span data-i18n="statMedian"></span></div>
-        <div class="stat-value" id="medianPrice">—</div>
-        <div class="stat-unit" data-i18n="statMedianUnit"></div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label"><i class="ti ti-building"></i> <span data-i18n="statTx"></span></div>
-        <div class="stat-value" id="txCount">—</div>
-        <div class="stat-unit" data-i18n="statTxUnit"></div>
-      </div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title" data-i18n="chartTitle"></div>
-      <div id="chartContainer" style="position: relative; width: 100%; height: 170px;">
-        <canvas id="priceChart"></canvas>
-      </div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title" data-i18n="txTitle"></div>
-      <div class="sample-list" id="sampleList"></div>
-    </div>
-    <div class="ai-card">
-      <div class="ai-header">
-        <div class="ai-icon"><i class="ti ti-sparkles"></i></div>
-        <div>
-          <div class="ai-label" data-i18n="aiLabel"></div>
-          <div class="ai-sublabel" data-i18n="aiSub"></div>
-        </div>
-      </div>
-      <div class="ai-text" id="aiText">—</div>
-      <div class="score-row" id="scoreRow"></div>
-    </div>
-    <div class="dvf-note">
-      <i class="ti ti-database"></i>
-      <span data-i18n="dvfNote"></span>
-    </div>
-  </div>
+<section class="hero">
+<div class="wrap">
+<div class="hero-kicker" data-i18n="heroKicker"></div>
+<h1 data-i18n="heroH1"></h1>
+<p data-i18n="heroP"></p>
+<div class="hero-figs">
+<div class="hero-fig"><div class="v" id="heroPrix">—</div><div class="l" data-i18n="heroL1"></div></div>
+<div class="hero-fig"><div class="v" id="heroEvo">—</div><div class="l" data-i18n="heroL2"></div></div>
+<div class="hero-fig"><div class="v" id="heroMaison">—</div><div class="l" data-i18n="heroL4"></div></div>
+<div class="hero-fig"><div class="v">6</div><div class="l" data-i18n="heroL3"></div></div>
 </div>
+</div>
+<div class="stripes"></div>
+</section>
 
-<footer data-i18n="footer"></footer>
+<section class="section-q" id="quartiers">
+<div class="wrap">
+<div class="thermo-head">
+<div>
+<div class="kicker" data-i18n="thermoKicker"></div>
+<h2 data-i18n="thermoH2"></h2>
+</div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<button id="btnTypeAppt" class="sort-btn active" onclick="setType('appt')" data-i18n="typeApptsBtn"></button>
+<button id="btnTypeMaison" class="sort-btn" onclick="setType('maison')" data-i18n="typeMaisonsBtn"></button>
+<span style="width:1px;height:22px;background:var(--hairline);margin:0 6px"></span>
+<button id="btnSortPrix" class="sort-btn active" onclick="setSort('prix')" data-i18n="sortPrix"></button>
+<button id="btnSortEvo" class="sort-btn" onclick="setSort('evolution')" data-i18n="sortEvo"></button>
+</div>
+</div>
+<div class="search-row">
+<span class="search-label" data-i18n="searchLabel"></span>
+<div class="autocomplete-wrap">
+<input type="text" id="addressInput" autocomplete="off" />
+<div class="autocomplete-dropdown" id="acDropdown"></div>
+</div>
+<button class="btn-search" id="btnSearch" onclick="analyzeInput()"><i class="ti ti-search"></i> <span data-i18n="btnSearch"></span></button>
+</div>
+<div class="loader" id="loader"><div class="dot-pulse"><span></span><span></span><span></span></div><div class="loader-step" id="loaderStep"></div></div>
+<div class="error-card" id="errorCard"></div>
+<div class="result-section" id="results">
+<div class="street-header">
+<div><div class="street-name" id="streetName">—</div><div class="street-sub" id="streetSub">—</div></div>
+<span class="badge" id="marketBadge">—</span>
+</div>
+<div class="detail-grid">
+<div>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-label"><i class="ti ti-building"></i> <span data-i18n="statAppt"></span></div>
+<div class="stat-value" id="priceAppt">—</div>
+<div class="stat-unit" data-i18n="statPriceUnit"></div>
+</div>
+<div class="stat-card">
+<div class="stat-label"><i class="ti ti-arrow-up-right"></i> <span data-i18n="statEvo"></span></div>
+<div class="stat-value" id="evolution">—</div>
+<div class="stat-unit" id="evolutionSub">—</div>
+</div>
+<div class="stat-card">
+<div class="stat-label"><i class="ti ti-home"></i> <span data-i18n="statMaison"></span></div>
+<div class="stat-value" id="priceMaison">—</div>
+<div class="stat-unit" id="maisonSub">—</div>
+</div>
+</div>
+<div class="chart-card">
+<div class="chart-title" data-i18n="chartTitle"></div>
+<div id="chartContainer"><canvas id="priceChart"></canvas></div>
+</div>
+</div>
+<div>
+<div class="chart-card" style="margin-top:0">
+<div class="tx-header">
+<div class="chart-title" style="margin-bottom:0" data-i18n="txTitle"></div>
+<span class="tx-source" id="txSource"></span>
+</div>
+<div class="sample-list" id="sampleList"></div>
+</div>
+<div class="ai-card">
+<div class="ai-header">
+<div class="ai-label" data-i18n="aiLabel"></div>
+<div class="ai-sublabel" data-i18n="aiSub"></div>
+</div>
+<div class="ai-text" id="aiText">—</div>
+<div class="score-row" id="scoreRow"></div>
+</div>
+</div>
+</div>
+<div class="dvf-note"><i class="ti ti-database"></i>&nbsp;<span data-i18n="dvfNote"></span></div>
+</div>
+<div id="thermoList"></div>
+<div class="thermo-foot"><span id="thermoN1"></span><span id="thermoN2"></span></div>
+</div>
+</section>
+
+<section class="section-est" id="estimation">
+<div class="wrap">
+<div class="est-card" id="estCard">
+<div class="est-stripes"></div>
+<div class="est-grid-top">
+<div>
+<h2 data-i18n-html="estH2"></h2>
+<p class="est-lead" data-i18n="estP"></p>
+</div>
+<form id="estForm" class="est-form-col" novalidate>
+<div class="autocomplete-wrap" style="min-width:0">
+<input type="text" id="efAddr" autocomplete="off" />
+<div class="autocomplete-dropdown" id="efAcDropdown"></div>
+</div>
+<div id="estDetails">
+<div class="est-grid">
+<div class="est-field"><label data-i18n="estType"></label><select id="efType"><option value="appt" data-i18n="estTypeAppt"></option><option value="maison" data-i18n="estTypeMaison"></option></select></div>
+<div class="est-field"><label data-i18n="estSurface"></label><input id="efSurface" type="number" min="9" max="1000" /></div>
+<div class="est-field"><label data-i18n="estPieces"></label><input id="efPieces" type="number" min="1" max="15" value="3" /></div>
+<div class="est-field"><label data-i18n="estEtage"></label><select id="efEtage"><option value="rdc" data-i18n="estRdc"></option><option value="mid" selected data-i18n="estEtageInter"></option><option value="dernier" data-i18n="estDernier"></option></select></div>
+<div class="est-field"><label data-i18n="estEtat"></label><select id="efEtat"><option value="neuf" data-i18n="estEtatNeuf"></option><option value="bon" selected data-i18n="estEtatBon"></option><option value="rafraichir" data-i18n="estEtatRafraichir"></option><option value="renover" data-i18n="estEtatRenover"></option></select></div>
+<div class="est-field"><label data-i18n="estTerrasse"></label><input id="efTerrasse" type="number" min="0" max="300" value="0" /></div>
+<div class="est-field"><label data-i18n="estParking"></label><input id="efParking" type="number" min="0" max="6" value="0" /></div>
+<div class="est-check"><input type="checkbox" id="efAsc" /><label for="efAsc" style="margin:0" data-i18n="estAsc"></label></div>
+<div class="est-check"><input type="checkbox" id="efVue" /><label for="efVue" style="margin:0" data-i18n="estVue"></label></div>
+</div>
+</div>
+<button class="est-cta" type="submit"><span data-i18n="estCta"></span></button>
+<span class="est-mention" data-i18n="estMention"></span>
+<div class="est-note" id="estErr" style="display:none"></div>
+<div id="estOut" style="display:none">
+<div class="est-result">
+<div class="stat-label" data-i18n="estResult"></div>
+<div class="est-value" id="estValue">—</div>
+<div class="est-range" id="estRange">—</div>
+</div>
+<div class="est-pdf-row" id="estGate" style="display:none"><input type="email" id="efEmail" placeholder="vous@email.com" /><button class="btn-search" type="button" onclick="leadAndReport()"><i class="ti ti-file-download"></i> <span data-i18n="estEmailBtn"></span></button></div>
+<div class="est-note" id="estPriv" data-i18n="estEmailPriv" style="display:none"></div>
+<button class="btn-voir-plus" id="estDirect" style="display:none" type="button" onclick="openReport()"><i class="ti ti-file-download"></i><span data-i18n="estPdf"></span></button>
+<div class="est-note" data-i18n="estDisclaimer"></div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-m" id="methode">
+<div class="wrap">
+<div class="kicker" data-i18n="methodKicker"></div>
+<h2 data-i18n="methodH2"></h2>
+<div class="method-grid">
+<div class="method-cell"><div class="mt" data-i18n="m1t"></div><p data-i18n="m1p"></p></div>
+<div class="method-cell"><div class="mt" data-i18n="m2t"></div><p data-i18n="m2p"></p></div>
+<div class="method-cell"><div class="mt" data-i18n="m3t"></div><p data-i18n="m3p"></p></div>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="wrap footer-in">
+<span class="wordmark">Anglet<em>.immo</em></span>
+<div class="footer-links">
+<a href="https://biarritz.immo/">Biarritz.immo</a>
+<a href="https://bayonne.immo/">Bayonne.immo</a>
+</div>
+<div class="footer-data" data-i18n="footerData"></div>
+</div>
+</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-// ── LANGUE ────────────────────────────────────────────────────────────────────
-let LANG = 'fr';
-const DATE_LOC = { fr: 'fr-FR', en: 'en-GB', es: 'es-ES' };
 
-const T = {
-  fr: {
-    searchLabel:   'Entrez une adresse à Anglet',
-    placeholder:   'Ex : 12 allée des Pins de Chiberta',
-    btnSearch:     'Analyser',
-    chipsLabel:    'Quartiers de référence',
-    'chip_chiberta':       'Chiberta',
-    'chip_chambre-amour':  'Chambre d\'Amour',
-    'chip_quintaou':       'Quintaou · Mairie',
-    'chip_blancpignon':    'Blancpignon',
-    'chip_sutar-brindos':  'Sutar · Brindos',
-    loaderGeo:     'Géocodage de l\'adresse…',
-    loaderAnalyze: 'Analyse du marché local…',
-    statPrice:     'Prix moyen / m²',
-    statPriceUnit: '€ / m²',
-    statEvo:       'Évolution',
-    statMedian:    'Prix médian',
-    statMedianUnit:'€ / m² (médiane)',
-    statTx:        'Transactions',
-    statTxUnit:    'ventes analysées',
-    chartTitle:    'Évolution prix au m² · 2019–2025',
-    txTitle:       'Dernières transactions DVF · 2025',
-    aiLabel:       'Analyse du quartier',
-    aiSub:         'Basée sur les données DVF 2019–2025',
-    scoreLabels:   ['Plage', 'Commerces', 'Calme', 'Rentabilité'],
-    youTag:        'vous',
-    errNotFound:   'Adresse introuvable à Anglet. Vérifiez le nom de rue.',
-    errOtherCity:  c => `Cette adresse est à ${c}, pas à Anglet.`,
-    dvfNote:       'Sources : <a href="https://www.data.gouv.fr/fr/datasets/5c4ae55a634f4117716d5656" target="_blank">DVF · DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a>',
-    footer:        'Anglet.immo · Données DVF 2019–2025',
-    appt:  'Appt',
-    maison:'Maison',
-  },
-  en: {
-    searchLabel:   'Enter an address in Anglet',
-    placeholder:   'E.g. 12 allée des Pins de Chiberta',
-    btnSearch:     'Search',
-    chipsLabel:    'Reference neighbourhoods',
-    'chip_chiberta':       'Chiberta',
-    'chip_chambre-amour':  'Chambre d\'Amour',
-    'chip_quintaou':       'Quintaou · Town Hall',
-    'chip_blancpignon':    'Blancpignon',
-    'chip_sutar-brindos':  'Sutar · Brindos',
-    loaderGeo:     'Geocoding address…',
-    loaderAnalyze: 'Analysing local market…',
-    statPrice:     'Avg price / m²',
-    statPriceUnit: '€ / m²',
-    statEvo:       'Change',
-    statMedian:    'Median price',
-    statMedianUnit:'€ / m² (median)',
-    statTx:        'Transactions',
-    statTxUnit:    'sales analysed',
-    chartTitle:    'Price per m² trend · 2019–2025',
-    txTitle:       'Latest DVF transactions · 2025',
-    aiLabel:       'Neighbourhood analysis',
-    aiSub:         'Based on DVF data 2019–2025',
-    scoreLabels:   ['Beach', 'Amenities', 'Quiet', 'Yield'],
-    youTag:        'you',
-    errNotFound:   'Address not found in Anglet. Please check the street name.',
-    errOtherCity:  c => `This address is in ${c}, not in Anglet.`,
-    dvfNote:       'Sources: <a href="https://www.data.gouv.fr/fr/datasets/5c4ae55a634f4117716d5656" target="_blank">DVF · DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a>',
-    footer:        'Anglet.immo · DVF data 2019–2025',
-    appt:  'Apt',
-    maison:'House',
-  },
-  es: {
-    searchLabel:   'Introduzca una dirección en Anglet',
-    placeholder:   'Ej: 12 allée des Pins de Chiberta',
-    btnSearch:     'Analizar',
-    chipsLabel:    'Barrios de referencia',
-    'chip_chiberta':       'Chiberta',
-    'chip_chambre-amour':  'Chambre d\'Amour',
-    'chip_quintaou':       'Quintaou · Ayuntamiento',
-    'chip_blancpignon':    'Blancpignon',
-    'chip_sutar-brindos':  'Sutar · Brindos',
-    loaderGeo:     'Geolocalización de la dirección…',
-    loaderAnalyze: 'Analizando el mercado local…',
-    statPrice:     'Precio medio / m²',
-    statPriceUnit: '€ / m²',
-    statEvo:       'Evolución',
-    statMedian:    'Precio mediano',
-    statMedianUnit:'€ / m² (mediana)',
-    statTx:        'Transacciones',
-    statTxUnit:    'ventas analizadas',
-    chartTitle:    'Evolución precio por m² · 2019–2025',
-    txTitle:       'Últimas transacciones DVF · 2025',
-    aiLabel:       'Análisis del barrio',
-    aiSub:         'Basado en datos DVF 2019–2025',
-    scoreLabels:   ['Playa', 'Comercios', 'Tranquilidad', 'Rentabilidad'],
-    youTag:        'usted',
-    errNotFound:   'Dirección no encontrada en Anglet. Compruebe el nombre de la calle.',
-    errOtherCity:  c => `Esta dirección está en ${c}, no en Anglet.`,
-    dvfNote:       'Fuentes: <a href="https://www.data.gouv.fr/fr/datasets/5c4ae55a634f4117716d5656" target="_blank">DVF · DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a>',
-    footer:        'Anglet.immo · Datos DVF 2019–2025',
-    appt:  'Apto',
-    maison:'Casa',
-  }
+let LANG='fr';
+const DATE_LOC={fr:'fr-FR',en:'en-GB',es:'es-ES'};
+const T={
+fr:{searchLabel:'Entrez une adresse à Anglet',placeholder:'Ex : 5 avenue de Chiberta',btnSearch:'Analyser',chipsLabel:'Quartiers de référence',chip_imperial:'Impérial','chip_centre-halles':'Centre · Halles','chip_bibi-beaurivage':'Bibi-Beaurivage',chip_milady:'Milady','chip_parc-hiver':'Parc d\'Hiver',loaderGeo:'Géocodage de l\'adresse…',loaderAnalyze:'Analyse du marché local…',statAppt:'Appartements',statPriceUnit:'€ / m² moyen (2024–25)',statEvo:'Évolution',chartTitle:'Évolution prix au m² · 2019–2025',txTitle:'Transactions DVF récentes',aiLabel:'Analyse du quartier',aiSub:'Basée sur les données DVF 2019–2025',scoreLabels:['Vue mer','Commerces','Calme','Rentabilité'],voirPlus:'Voir plus',voirMoins:'Voir moins',txLoading:'Chargement des transactions…',errNotFound:'Adresse introuvable à Anglet. Vérifiez le nom de rue.',errOtherCity:c=>'Cette adresse est à '+c+', pas à Anglet.',dvfNote:'Sources : <a href="https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/dvfplus-open-data" target="_blank">DVF+ open-data · Cerema/DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a> · Extraction juillet 2026',footer:'Anglet.immo · Données DVF 2019–2025 · Pyrénées-Atlantiques 64600',appt:'Appt',maison:'Maison',sales:'ventes',estTitle:'Estimer mon bien (gratuit)',estSub:'Basée sur les ventes réelles DVF 2019–2025 de votre quartier',estType:'Type de bien',estTypeAppt:'Appartement',estTypeMaison:'Maison',estZone:'Quartier',estSurface:'Surface (m²)',estPieces:'Pièces',estEtage:'Étage',estRdc:'Rez-de-chaussée',estEtageInter:'Étage intermédiaire',estDernier:'Dernier étage',estEtat:'État général',estEtatNeuf:'Neuf / rénové',estEtatBon:'Bon état',estEtatRafraichir:'À rafraîchir',estEtatRenover:'À rénover',estTerrasse:'Balcon / terrasse (m²)',estParking:'Parking (places)',estAsc:'Ascenseur',estVue:'Vue mer',estGo:'Estimer',estResult:'Valeur estimée',estEmailBtn:'Recevoir le rapport',estPdf:'Télécharger le rapport détaillé',estEmailPriv:'Votre email sert uniquement à vous recontacter au sujet de votre bien.',estDisclaimer:'Estimation indicative calculée à partir des données DVF (DGFiP), sans valeur d\'expertise.',estReportTitle:'Étude d\'estimation',estMethodoTitle:'Méthodologie',estMethodo:'Base : prix moyen de {base} €/m² (ventes DVF 2024–2025 du quartier), ajusté selon l\'état, l\'étage, la vue mer, la surface et les annexes (terrasse, parking). Fourchette : ±10 %.',estPrint:'Imprimer / Enregistrer en PDF',estComps:'Ventes comparables à proximité (DVF)',estAddr:'Adresse du bien',estLocalN:'basé sur {n} ventes à proximité',estZoneFallback:'moyenne du quartier'},
+en:{searchLabel:'Enter an address in Anglet',placeholder:'E.g. 5 avenue de Chiberta',btnSearch:'Search',chipsLabel:'Reference neighbourhoods',chip_imperial:'Imperial','chip_centre-halles':'Centre · Halles','chip_bibi-beaurivage':'Bibi-Beaurivage',chip_milady:'Milady','chip_parc-hiver':'Parc d\'Hiver',loaderGeo:'Geocoding address…',loaderAnalyze:'Analysing local market…',statAppt:'Apartments',statPriceUnit:'average €/m² (2024–25)',statEvo:'Change',chartTitle:'Price per m² trend · 2019–2025',txTitle:'Recent DVF transactions',aiLabel:'Neighbourhood analysis',aiSub:'Based on DVF data 2019–2025',scoreLabels:['Sea view','Amenities','Quiet','Yield'],voirPlus:'See more',voirMoins:'See less',txLoading:'Loading transactions…',errNotFound:'Address not found in Anglet. Please check the street name.',errOtherCity:c=>'This address is in '+c+', not in Anglet.',dvfNote:'Sources: <a href="https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/dvfplus-open-data" target="_blank">DVF+ open-data · Cerema/DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a> · Extracted July 2026',footer:'Anglet.immo · DVF data 2019–2025 · Pyrénées-Atlantiques 64600',appt:'Apt',maison:'House',sales:'sales',estTitle:'Estimate my property (free)',estSub:'Based on real DVF sales 2019–2025 in your neighbourhood',estType:'Property type',estTypeAppt:'Apartment',estTypeMaison:'House',estZone:'Neighbourhood',estSurface:'Living area (m²)',estPieces:'Rooms',estEtage:'Floor',estRdc:'Ground floor',estEtageInter:'Intermediate floor',estDernier:'Top floor',estEtat:'Overall condition',estEtatNeuf:'New / renovated',estEtatBon:'Good condition',estEtatRafraichir:'Needs refreshing',estEtatRenover:'Needs renovation',estTerrasse:'Balcony / terrace (m²)',estParking:'Parking (spaces)',estAsc:'Lift',estVue:'Sea view',estGo:'Estimate',estResult:'Estimated value',estEmailBtn:'Get the report',estPdf:'Download the detailed report',estEmailPriv:'Your email is only used to contact you about your property.',estDisclaimer:'Indicative estimate based on DVF data (DGFiP), not a formal appraisal.',estReportTitle:'Valuation report',estMethodoTitle:'Methodology',estMethodo:'Base: average price of {base} €/m² (DVF sales 2024–2025 in the neighbourhood), adjusted for condition, floor, sea view, size and extras (terrace, parking). Range: ±10%.',estPrint:'Print / Save as PDF',estComps:'Comparable sales nearby (DVF)',estAddr:'Property address',estLocalN:'based on {n} nearby sales',estZoneFallback:'neighbourhood average'},
+es:{searchLabel:'Introduzca una dirección en Anglet',placeholder:'Ej: 5 avenue de Chiberta',btnSearch:'Analizar',chipsLabel:'Barrios de referencia',chip_imperial:'Imperial','chip_centre-halles':'Centro · Halles','chip_bibi-beaurivage':'Bibi-Beaurivage',chip_milady:'Milady','chip_parc-hiver':'Parc d\'Hiver',loaderGeo:'Geolocalización de la dirección…',loaderAnalyze:'Analizando el mercado local…',statAppt:'Apartamentos',statPriceUnit:'€/m² medio (2024–25)',statEvo:'Evolución',chartTitle:'Evolución precio por m² · 2019–2025',txTitle:'Transacciones DVF recientes',aiLabel:'Análisis del barrio',aiSub:'Basado en datos DVF 2019–2025',scoreLabels:['Vista al mar','Comercios','Tranquilidad','Rentabilidad'],voirPlus:'Ver más',voirMoins:'Ver menos',txLoading:'Cargando transacciones…',errNotFound:'Dirección no encontrada en Anglet. Compruebe el nombre de la calle.',errOtherCity:c=>'Esta dirección está en '+c+', no en Anglet.',dvfNote:'Fuentes: <a href="https://datafoncier.cerema.fr/donnees/autres-donnees-foncieres/dvfplus-open-data" target="_blank">DVF+ open-data · Cerema/DGFiP</a> + <a href="https://adresse.data.gouv.fr" target="_blank">BAN · IGN</a> · Extracción julio 2026',footer:'Anglet.immo · Datos DVF 2019–2025 · Pyrénées-Atlantiques 64600',appt:'Apto',maison:'Casa',sales:'ventas',estTitle:'Estimar mi propiedad (gratis)',estSub:'Basada en ventas reales DVF 2019–2025 de su barrio',estType:'Tipo de bien',estTypeAppt:'Apartamento',estTypeMaison:'Casa',estZone:'Barrio',estSurface:'Superficie (m²)',estPieces:'Habitaciones',estEtage:'Planta',estRdc:'Planta baja',estEtageInter:'Planta intermedia',estDernier:'Última planta',estEtat:'Estado general',estEtatNeuf:'Nuevo / renovado',estEtatBon:'Buen estado',estEtatRafraichir:'Para refrescar',estEtatRenover:'Para renovar',estTerrasse:'Balcón / terraza (m²)',estParking:'Parking (plazas)',estAsc:'Ascensor',estVue:'Vista al mar',estGo:'Estimar',estResult:'Valor estimado',estEmailBtn:'Recibir el informe',estPdf:'Descargar el informe detallado',estEmailPriv:'Su email solo se usa para contactarle sobre su propiedad.',estDisclaimer:'Estimación indicativa basada en datos DVF (DGFiP), sin valor de tasación.',estReportTitle:'Informe de valoración',estMethodoTitle:'Metodología',estMethodo:'Base: precio medio de {base} €/m² (ventas DVF 2024–2025 del barrio), ajustado según estado, planta, vista al mar, superficie y extras. Horquilla: ±10 %.',estPrint:'Imprimir / Guardar en PDF',estComps:'Ventas comparables cercanas (DVF)',estAddr:'Dirección del bien',estLocalN:'basado en {n} ventas cercanas',estZoneFallback:'media del barrio'}
 };
-
-function t(key) { return T[LANG][key] ?? T['fr'][key] ?? key; }
-
-function setLang(lang) {
-  LANG = lang;
-  document.documentElement.lang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b =>
-    b.classList.toggle('active', b.textContent === lang.toUpperCase())
-  );
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (key === 'dvfNote') { el.innerHTML = t(key); return; }
-    el.textContent = t(key);
-  });
-  document.getElementById('addressInput').placeholder = t('placeholder');
-  if (currentZone && document.getElementById('results').classList.contains('visible')) {
-    render(currentZone, currentGeo);
-  }
-}
-
-// ── DONNÉES ───────────────────────────────────────────────────────────────────
-const BAN = 'https://api-adresse.data.gouv.fr/search/';
-const AGL = '64024'; // INSEE Anglet
-
-const ZONES = [
-  {
-    id: 'chiberta',
-    name: { fr: 'Chiberta',                      en: 'Chiberta',                       es: 'Chiberta' },
-    zone: { fr: 'Anglet · Lac & Forêt de pins',  en: 'Anglet · Lake & Pine Forest',    es: 'Anglet · Lago y Pinar' },
-    lat: 43.5065, lon: -1.5415,
-    price: 6400, median: 6000, tx: 38, evo: '+45', eLabel: '+45% (2019→2025)',
-    history: [4400, 5000, 5600, 6600, 6300, 6100, 6400],
-    years: ['2019','2020','2021','2022','2023','2024','2025'],
-    badge: { label: { fr: 'Marché très tendu', en: 'Very tight market', es: 'Mercado muy tenso' }, cls: 'badge-hot' },
-    ai: {
-      fr: '<strong>Chiberta</strong> est le quartier le plus prisé d\'Anglet. Entre le lac de Chiberta, la forêt de pins centenaires et le golf, ce secteur résidentiel huppé accueille villas contemporaines et appartements avec vue sur le lac. Clientèle aisée, marché discret — les biens se vendent souvent de gré à gré, avec des prix pouvant dépasser <strong>8 000 €/m²</strong> pour les propriétés exceptionnelles en bord de lac.',
-      en: '<strong>Chiberta</strong> is Anglet\'s most sought-after neighbourhood. Nestled between Lake Chiberta, century-old pine forests and the golf course, this upmarket residential area hosts contemporary villas and lake-view apartments. Affluent, discreet market — properties often sell off-market, with exceptional lakeside homes exceeding <strong>8,000 €/m²</strong>.',
-      es: '<strong>Chiberta</strong> es el barrio más codiciado de Anglet. Entre el lago de Chiberta, el pinar centenario y el campo de golf, este sector residencial de lujo alberga villas contemporáneas y apartamentos con vistas al lago. Mercado selecto y discreto — los bienes se venden a menudo de manera privada, con precios que pueden superar los <strong>8.000 €/m²</strong> para propiedades excepcionales.',
-    },
-    scores: [[85],[40],[95],[62]],
-    nearby: [
-      { rue: 'ALLÉE DES PINS DE CHIBERTA', num: '8',  type: 'appt',   surface: 82,  floor: '2e',  pm2: 7100, date: '2025-03-12' },
-      { rue: 'ALLÉE DU LAC',               num: '4',  type: 'maison', surface: 195, floor: null,  pm2: 6800, date: '2025-01-20' },
-      { rue: 'RUE DU GOLF',                num: '12', type: 'appt',   surface: 65,  floor: '1er', pm2: 6200, date: '2025-02-18' },
-    ]
-  },
-  {
-    id: 'chambre-amour',
-    name: { fr: 'Chambre d\'Amour',              en: 'Chambre d\'Amour',               es: 'Chambre d\'Amour' },
-    zone: { fr: 'Anglet · Front de mer nord',    en: 'Anglet · North seafront',         es: 'Anglet · Frente al mar norte' },
-    lat: 43.5255, lon: -1.5530,
-    price: 5700, median: 5300, tx: 52, evo: '+42', eLabel: '+42% (2019→2025)',
-    history: [4000, 4500, 5100, 6000, 5800, 5500, 5700],
-    years: ['2019','2020','2021','2022','2023','2024','2025'],
-    badge: { label: { fr: 'Marché très tendu', en: 'Very tight market', es: 'Mercado muy tenso' }, cls: 'badge-hot' },
-    ai: {
-      fr: 'La <strong>Chambre d\'Amour</strong> est le quartier balnéaire iconique d\'Anglet, au nord de la ville. Directement accessible depuis la plage éponyme et ses rochers historiques, le secteur attire surfeurs, familles et touristes. Les appartements avec vue sur l\'océan Atlantic sont très recherchés en résidence secondaire, avec des <strong>rendements locatifs saisonniers</strong> parmi les meilleurs du BAB.',
-      en: '<strong>Chambre d\'Amour</strong> is Anglet\'s iconic seaside neighbourhood in the north of town. With direct access to its famous beach and historic rocks, the area draws surfers, families and tourists alike. Ocean-view apartments are highly sought after as holiday homes, delivering some of the <strong>best seasonal rental yields</strong> in the BAB conurbation.',
-      es: 'La <strong>Chambre d\'Amour</strong> es el icónico barrio costero de Anglet, al norte de la ciudad. Con acceso directo a la famosa playa y sus rocas históricas, el sector atrae a surfistas, familias y turistas. Los apartamentos con vistas al océano Atlántico son muy buscados como residencias de vacaciones, ofreciendo algunos de los <strong>mejores rendimientos de alquiler estacional</strong> del área BAB.',
-    },
-    scores: [[100],[55],[45],[92]],
-    nearby: [
-      { rue: 'AV DE LA CHAMBRE D\'AMOUR',  num: '3',  type: 'appt',   surface: 54,  floor: '3e',  pm2: 6300, date: '2025-03-25' },
-      { rue: 'BD DES PLAGES',              num: '18', type: 'appt',   surface: 70,  floor: '2e',  pm2: 5800, date: '2025-02-05' },
-      { rue: 'RUE DES CAVALIERS',          num: '7',  type: 'appt',   surface: 48,  floor: '1er', pm2: 5200, date: '2025-01-15' },
-    ]
-  },
-  {
-    id: 'quintaou',
-    name: { fr: 'Quintaou · Mairie',             en: 'Quintaou · Town Hall',            es: 'Quintaou · Ayuntamiento' },
-    zone: { fr: 'Anglet · Cœur de ville',        en: 'Anglet · Town centre',            es: 'Anglet · Centro ciudad' },
-    lat: 43.4875, lon: -1.5147,
-    price: 4300, median: 4000, tx: 91, evo: '+39', eLabel: '+39% (2019→2025)',
-    history: [3100, 3500, 4000, 4700, 4500, 4200, 4300],
-    years: ['2019','2020','2021','2022','2023','2024','2025'],
-    badge: { label: { fr: 'Marché dynamique', en: 'Dynamic market', es: 'Mercado dinámico' }, cls: 'badge-warm' },
-    ai: {
-      fr: '<strong>Quintaou · Mairie</strong> est le véritable cœur administratif et commercial d\'Anglet. La mairie, le centre commercial de Quintaou, les lignes de bus BAB et la rue principale concentrent ici la vie quotidienne angloyenne. Secteur le plus liquide de la ville avec <strong>91 transactions</strong> — idéal pour une résidence principale ou un investissement locatif longue durée.',
-      en: '<strong>Quintaou · Town Hall</strong> is Anglet\'s true administrative and commercial heart. The town hall, Quintaou shopping centre, BAB bus lines and the main street bring everyday life together here. The most liquid sector in town with <strong>91 transactions</strong> — ideal for a primary residence or long-term rental investment.',
-      es: '<strong>Quintaou · Ayuntamiento</strong> es el verdadero corazón administrativo y comercial de Anglet. El ayuntamiento, el centro comercial de Quintaou, las líneas de autobús BAB y la calle principal concentran aquí la vida cotidiana anglesa. El sector más líquido de la ciudad con <strong>91 transacciones</strong> — ideal para residencia principal o inversión en alquiler a largo plazo.',
-    },
-    scores: [[30],[100],[52],[82]],
-    nearby: [
-      { rue: 'AV DU QUINTAOU',             num: '22', type: 'appt',   surface: 67,  floor: '2e',  pm2: 4600, date: '2025-04-10' },
-      { rue: 'RUE DE MONTBRUN',            num: '5',  type: 'appt',   surface: 55,  floor: '1er', pm2: 4200, date: '2025-02-22' },
-      { rue: 'BD DU BAB',                  num: '34', type: 'maison', surface: 120, floor: null,  pm2: 3900, date: '2025-01-30' },
-    ]
-  },
-  {
-    id: 'blancpignon',
-    name: { fr: 'Blancpignon',                   en: 'Blancpignon',                     es: 'Blancpignon' },
-    zone: { fr: 'Anglet · Résidentiel nord',     en: 'Anglet · North residential',      es: 'Anglet · Residencial norte' },
-    lat: 43.5005, lon: -1.5285,
-    price: 3900, median: 3600, tx: 74, evo: '+36', eLabel: '+36% (2019→2025)',
-    history: [2900, 3200, 3600, 4300, 4100, 3800, 3900],
-    years: ['2019','2020','2021','2022','2023','2024','2025'],
-    badge: { label: { fr: 'En vogue', en: 'Trending', es: 'De moda' }, cls: 'badge-warm' },
-    ai: {
-      fr: '<strong>Blancpignon</strong> est le grand quartier résidentiel familial d\'Anglet, à mi-chemin entre les plages et le centre-ville. Maisons individuelles avec jardins, villas des années 70-80, résidences sécurisées — une offre variée qui attire les familles en quête d\'espace. À <strong>10 minutes à pied</strong> des plages des Corsaires et de Marinella, le secteur offre un excellent compromis qualité-prix dans l\'agglomération BAB.',
-      en: '<strong>Blancpignon</strong> is Anglet\'s large family residential neighbourhood, midway between the beaches and town centre. Detached houses with gardens, 1970s-80s villas, gated residences — a varied offer that attracts space-seeking families. Just <strong>10 minutes\' walk</strong> from Corsaires and Marinella beaches, the area offers excellent value in the BAB conurbation.',
-      es: '<strong>Blancpignon</strong> es el gran barrio residencial familiar de Anglet, a medio camino entre las playas y el centro. Casas individuales con jardín, villas de los años 70-80, residencias cerradas — una oferta variada que atrae a familias en busca de espacio. A tan solo <strong>10 minutos a pie</strong> de las playas de Corsaires y Marinella, el sector ofrece una excelente relación calidad-precio en el área BAB.',
-    },
-    scores: [[70],[62],[75],[72]],
-    nearby: [
-      { rue: 'RUE DE BLANCPIGNON',         num: '14', type: 'maison', surface: 142, floor: null,  pm2: 4200, date: '2025-03-08' },
-      { rue: 'ALLÉE DES CORSAIRES',        num: '6',  type: 'appt',   surface: 58,  floor: '2e',  pm2: 3900, date: '2025-01-28' },
-      { rue: 'RUE DU LAZARET',             num: '3',  type: 'appt',   surface: 44,  floor: 'RdC', pm2: 3600, date: '2025-02-14' },
-    ]
-  },
-  {
-    id: 'sutar-brindos',
-    name: { fr: 'Sutar · Brindos',               en: 'Sutar · Brindos',                 es: 'Sutar · Brindos' },
-    zone: { fr: 'Anglet · Sud verdoyant',         en: 'Anglet · Green south',            es: 'Anglet · Sur verde' },
-    lat: 43.4720, lon: -1.5080,
-    price: 3400, median: 3100, tx: 58, evo: '+33', eLabel: '+33% (2019→2025)',
-    history: [2600, 2800, 3200, 3800, 3600, 3300, 3400],
-    years: ['2019','2020','2021','2022','2023','2024','2025'],
-    badge: { label: { fr: 'Marché accessible', en: 'Accessible market', es: 'Mercado accesible' }, cls: 'badge-cool' },
-    ai: {
-      fr: '<strong>Sutar · Brindos</strong> est le secteur le plus calme et le plus vert d\'Anglet, aux portes de Bayonne et d\'Arcangues. Le lac de Brindos, ses jardins paisibles et l\'ancien château hôtel confèrent à ce secteur un charme rural rare à <strong>15 minutes du centre de Biarritz</strong>. Idéal pour les primo-accédants ou les familles cherchant de l\'espace à prix BAB le plus abordable.',
-      en: '<strong>Sutar · Brindos</strong> is Anglet\'s quietest and greenest area, at the gateway to Bayonne and Arcangues. Lake Brindos, its peaceful gardens and the historic château hotel give this area a rare rural charm just <strong>15 minutes from central Biarritz</strong>. Ideal for first-time buyers or families seeking space at the most affordable BAB prices.',
-      es: '<strong>Sutar · Brindos</strong> es el sector más tranquilo y verde de Anglet, a las puertas de Bayona y Arcangues. El lago de Brindos, sus tranquilos jardines y el antiguo château-hôtel confieren a este sector un encanto rural raro a tan solo <strong>15 minutos del centro de Biarritz</strong>. Ideal para compradores primerizos o familias que buscan espacio a los precios más asequibles del BAB.',
-    },
-    scores: [[18],[35],[98],[68]],
-    nearby: [
-      { rue: 'AV DE SUTAR',                num: '9',  type: 'maison', surface: 168, floor: null,  pm2: 3700, date: '2025-03-20' },
-      { rue: 'RUE DE BRINDOS',             num: '5',  type: 'maison', surface: 145, floor: null,  pm2: 3400, date: '2025-02-10' },
-      { rue: 'CHEMIN D\'HONDRITZ',         num: '3',  type: 'appt',   surface: 61,  floor: '1er', pm2: 3100, date: '2025-01-18' },
-    ]
-  }
+function t(key){return T[LANG][key]??T.fr[key]??key;}
+function setLang(lang){LANG=lang;document.documentElement.lang=lang;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===lang.toUpperCase()));document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(k==='dvfNote'||k==='footer'){el.innerHTML=t(k);return;}el.textContent=t(k);});document.getElementById('addressInput').placeholder=t('placeholder');if(currentZone&&document.getElementById('results').classList.contains('visible'))render(currentZone,currentGeo,false);}
+const BAN='https://api-adresse.data.gouv.fr/search/';
+const BZC='64024',SHOW=5;
+/* Données réelles DVF+ open-data (Cerema/DGFiP), extraites le 2026-07-03 via apidf-preprod.cerema.fr ;
+   adresses croisées avec le DVF géolocalisé Etalab (dvf-api.data.gouv.fr). L'étage n'existe pas dans DVF.
+   Méthodo : ventes d'un seul appartement (codtypbien 121*) ou d'une seule maison (111*), rayon 750 m autour du centre
+   de chaque quartier, surface > 9 m², 1 000 < €/m² < 35 000. priceAppt = prix moyen appartements 2024–2025 ;
+   history = prix moyen par année. Pour rafraîchir : voir dvf-biarritz.json dans le repo. */
+const ZONES=[
+{id:"chiberta",name:{"fr":"Chiberta","en":"Chiberta","es":"Chiberta"},zone:{"fr":"Anglet · Forêt et océan","en":"Anglet · Forest and ocean","es":"Anglet · Bosque y océano"},lat:43.5135,lon:-1.523,priceAppt:7987,evo:"+44",eLabel:"+44% (2019→2025)",nTx:141,pm2Maison:10791,nMaison:20,history:[5615,7214,8389,9205,8290,7829,8066],years:["2019","2020","2021","2022","2023","2024","2025"],badge:{"label":{"fr":"Marché rare et cher","en":"Rare and expensive","es":"Escaso y caro"},"cls":"badge-hot"},ai:{"fr":"Le quartier le plus recherché d'Anglet : villas sous les pins, entre le golf et l'océan. Prix moyen 2024–2025 : <strong>7 990 €/m²</strong> pour les rares appartements (24 ventes en deux ans, échantillon réduit) et <strong>10 800 €/m²</strong> pour les maisons, les plus chères de la ville.","en":"Anglet's most sought-after area: villas under the pines, between the golf course and the ocean. 2024–2025 average: <strong>€7,990/m²</strong> for the rare apartments (24 sales in two years, small sample) and <strong>€10,800/m²</strong> for houses, the city's most expensive.","es":"El barrio más codiciado de Anglet: villas bajo los pinos, entre el golf y el océano. Media 2024–2025: <strong>7.990 €/m²</strong> en los escasos apartamentos y <strong>10.800 €/m²</strong> en casas, las más caras de la ciudad."},scores:[[55],[35],[95],[45]],nearby:[{"rue":"AV DES DUNES","num":"17","p":5,"type":"maison","surface":210,"pm2":19324,"date":"2025-12-19"},{"rue":"AV DES GENETS","num":"30","p":4,"type":"maison","surface":90,"pm2":15873,"date":"2025-12-19"},{"rue":"BD DES PLAGES","num":"102","p":1,"type":"appt","surface":30,"pm2":8017,"date":"2025-12-17"},{"rue":"BD DES PLAGES","num":"102","p":2,"type":"appt","surface":51,"pm2":7147,"date":"2025-12-17"},{"rue":"ALL OCEAN ET FORET","num":"7","p":2,"type":"appt","surface":43,"pm2":7337,"date":"2025-12-05"},{"rue":"AV DES CHASSEURS","num":"28","p":3,"type":"appt","surface":80,"pm2":12975,"date":"2025-10-08"},{"rue":"AV DES CRETES","num":"42","p":7,"type":"maison","surface":182,"pm2":11456,"date":"2025-09-26"},{"rue":"AV DES DUNES","num":"6","p":3,"type":"appt","surface":76,"pm2":9737,"date":"2025-09-25"},{"rue":"BD DES PLAGES","num":"104","p":1,"type":"appt","surface":30,"pm2":8226,"date":"2025-09-05"},{"rue":"AV DES CRETES","num":"46","p":6,"type":"maison","surface":275,"pm2":10545,"date":"2025-07-29"},{"rue":"BD DES PLAGES","num":"102","p":1,"type":"appt","surface":31,"pm2":8606,"date":"2025-07-11"},{"rue":"ALL OCEAN ET FORET","num":"7","p":1,"type":"appt","surface":28,"pm2":4027,"date":"2025-06-26"},{"rue":"AV DE LA FORET","num":"8","p":4,"type":"maison","surface":71,"pm2":12394,"date":"2025-06-11"},{"rue":"ALL DES CORMORANS","num":"2","p":6,"type":"maison","surface":133,"pm2":8158,"date":"2025-06-06"},{"rue":"AV DES CRETES","num":"4","p":3,"type":"appt","surface":62,"pm2":7097,"date":"2025-05-22"}]},
+{id:"chambre-amour",name:{"fr":"Chambre d'Amour","en":"Chambre d'Amour","es":"Chambre d'Amour"},zone:{"fr":"Anglet · Front de mer","en":"Anglet · Seafront","es":"Anglet · Frente al mar"},lat:43.4945,lon:-1.539,priceAppt:6762,evo:"+15",eLabel:"+15% (2019→2025)",nTx:698,pm2Maison:10122,nMaison:33,history:[5707,5894,6624,7270,7198,6963,6574],years:["2019","2020","2021","2022","2023","2024","2025"],badge:{"label":{"fr":"Marché très tendu","en":"Very tight market","es":"Mercado muy tenso"},"cls":"badge-hot"},ai:{"fr":"Le balnéaire d'Anglet, des Sables d'Or aux falaises, face aux plages. Prix moyen 2024–2025 : <strong>6 760 €/m²</strong> pour les appartements, en repli depuis le pic de 2022 (7 270 €/m²). C'est le marché le plus actif du littoral : 159 ventes d'appartements en deux ans.","en":"Anglet's seaside quarter, from Sables d'Or to the cliffs, facing the beaches. 2024–2025 average: <strong>€6,760/m²</strong> for apartments, easing since the 2022 peak (€7,270/m²). The busiest coastal market: 159 apartment sales in two years.","es":"El barrio playero de Anglet, frente a las playas. Media 2024–2025: <strong>6.760 €/m²</strong> en apartamentos, en retroceso desde el pico de 2022. El mercado costero más activo: 159 ventas en dos años."},scores:[[90],[70],[60],[75]],nearby:[{"rue":"PROM DES FALAISES","num":"5","p":2,"type":"appt","surface":32,"pm2":8375,"date":"2025-12-30"},{"rue":"ESP DES GASCONS","num":"5","p":2,"type":"appt","surface":37,"pm2":7640,"date":"2025-12-22"},{"rue":"ALL DES ARROQUES","num":"2","p":1,"type":"appt","surface":20,"pm2":8500,"date":"2025-12-19"},{"rue":"RUE DE HOURTICQ","num":"33","p":3,"type":"appt","surface":69,"pm2":6609,"date":"2025-12-18"},{"rue":"ESP DES GASCONS","num":"1","p":1,"type":"appt","surface":26,"pm2":6154,"date":"2025-12-15"},{"rue":"RUE DE FOURVIERES","num":"9","p":4,"type":"appt","surface":93,"pm2":9762,"date":"2025-12-12"},{"rue":"AV DE LA CHAMBRE D AMOUR","num":"39","p":5,"type":"maison","surface":130,"pm2":7914,"date":"2025-11-28"},{"rue":"AV DU GOLF","num":"43","p":4,"type":"maison","surface":100,"pm2":20119,"date":"2025-11-28"},{"rue":"BD DES PLAGES","num":"18","p":4,"type":"appt","surface":79,"pm2":7937,"date":"2025-11-28"},{"rue":"RUE DE LABERTRANNE","num":"30","p":4,"type":"appt","surface":92,"pm2":8587,"date":"2025-11-27"},{"rue":"PROM DES FALAISES","num":"7","p":1,"type":"appt","surface":24,"pm2":5833,"date":"2025-11-12"},{"rue":"BD DES PLAGES","num":"18","p":2,"type":"appt","surface":44,"pm2":9095,"date":"2025-11-07"},{"rue":"ALL ARISTIDE BRIAND","num":"9","p":5,"type":"appt","surface":90,"pm2":5367,"date":"2025-11-06"},{"rue":"RUE DES PONTRITS","num":"23","p":2,"type":"appt","surface":40,"pm2":5498,"date":"2025-11-05"},{"rue":"RUE DE BOUNEY","num":"8","p":3,"type":"appt","surface":83,"pm2":7120,"date":"2025-10-30"}]},
+{id:"cinq-cantons",name:{"fr":"Cinq-Cantons","en":"Cinq-Cantons","es":"Cinq-Cantons"},zone:{"fr":"Anglet · Cœur commerçant","en":"Anglet · Shopping heart","es":"Anglet · Corazón comercial"},lat:43.4883,lon:-1.5223,priceAppt:5729,evo:"+45",eLabel:"+45% (2019→2025)",nTx:574,pm2Maison:7135,nMaison:72,history:[4070,4683,4914,5421,5589,5555,5900],years:["2019","2020","2021","2022","2023","2024","2025"],badge:{"label":{"fr":"La plus forte hausse","en":"Fastest rising","es":"La mayor subida"},"cls":"badge-warm"},ai:{"fr":"Le carrefour historique d'Anglet, ses commerces et sa vie de village. Prix moyen 2024–2025 : <strong>5 730 €/m²</strong>, et la plus forte hausse de la ville : <strong>+45 %</strong> depuis 2019, avec des prix encore en progression en 2025.","en":"Anglet's historic crossroads, with its shops and village feel. 2024–2025 average: <strong>€5,730/m²</strong>, and the city's strongest rise: <strong>+45%</strong> since 2019, with prices still climbing in 2025.","es":"El cruce histórico de Anglet, con sus comercios y su vida de barrio. Media 2024–2025: <strong>5.730 €/m²</strong>, y la mayor subida de la ciudad: <strong>+45 %</strong> desde 2019."},scores:[[40],[95],[55],[80]],nearby:[{"rue":"ALL DES ALOUETTES","num":"7","p":3,"type":"appt","surface":60,"pm2":3783,"date":"2025-12-26"},{"rue":"RUE DES FLEURISTES","num":"18","p":4,"type":"appt","surface":68,"pm2":4460,"date":"2025-12-18"},{"rue":"RUE DE HIRIGOGNE","num":"74","p":4,"type":"maison","surface":137,"pm2":5766,"date":"2025-12-18"},{"rue":"RUE DE SALIS","num":"10","p":2,"type":"appt","surface":62,"pm2":6371,"date":"2025-12-18"},{"rue":"RUE DE JOUANICOT","num":"68","p":4,"type":"maison","surface":101,"pm2":8653,"date":"2025-12-15"},{"rue":"ALL DES ALOUETTES","num":"12","p":2,"type":"appt","surface":53,"pm2":4557,"date":"2025-12-15"},{"rue":"RUE DE SALIS","num":"1","p":2,"type":"appt","surface":44,"pm2":6300,"date":"2025-12-11"},{"rue":"RUE DU BOIS BELIN","num":"31","p":4,"type":"appt","surface":102,"pm2":6853,"date":"2025-12-08"},{"rue":"ALL DU GRAND CHAMP","num":"1","p":3,"type":"appt","surface":60,"pm2":5000,"date":"2025-12-05"},{"rue":"RUE DES CINQ CANTONS","num":"47","p":4,"type":"appt","surface":67,"pm2":4896,"date":"2025-12-04"},{"rue":"RUE DES CINQ CANTONS","num":"64","p":2,"type":"appt","surface":33,"pm2":7879,"date":"2025-11-27"},{"rue":"RUE DU BOIS BELIN","num":"31","p":4,"type":"appt","surface":101,"pm2":6426,"date":"2025-11-27"},{"rue":"RUE DES PONTRITS","num":"2","p":5,"type":"maison","surface":125,"pm2":8704,"date":"2025-11-21"},{"rue":"RUE DES PONTRITS","num":"11","p":4,"type":"appt","surface":75,"pm2":6763,"date":"2025-11-14"},{"rue":"RUE DES QUATRE CANTONS","num":"39","p":2,"type":"appt","surface":50,"pm2":6120,"date":"2025-11-12"}]},
+{id:"blancpignon",name:{"fr":"Blancpignon","en":"Blancpignon","es":"Blancpignon"},zone:{"fr":"Anglet · Rive de l'Adour","en":"Anglet · Adour riverside","es":"Anglet · Orilla del Adour"},lat:43.515,lon:-1.504,priceAppt:5500,evo:"+23",eLabel:"+23% (2019→2025)",nTx:227,pm2Maison:6431,nMaison:32,history:[4308,4698,4635,5299,6185,5619,5312],years:["2019","2020","2021","2022","2023","2024","2025"],badge:{"label":{"fr":"En mutation","en":"In transition","es":"En transformación"},"cls":"badge-warm"},ai:{"fr":"Entre l'Adour et le boulevard du BAB, un ancien quartier populaire en pleine mutation. Prix moyen 2024–2025 : <strong>5 500 €/m²</strong> pour les appartements et <strong>6 430 €/m²</strong> pour les maisons. Le marché s'est assagi après le pic de 2023.","en":"Between the Adour river and the BAB boulevard, a former working-class quarter in full transition. 2024–2025 average: <strong>€5,500/m²</strong> for apartments and <strong>€6,430/m²</strong> for houses. The market has cooled since its 2023 peak.","es":"Entre el Adour y el bulevar del BAB, un antiguo barrio popular en plena transformación. Media 2024–2025: <strong>5.500 €/m²</strong> en apartamentos y <strong>6.430 €/m²</strong> en casas."},scores:[[15],[55],[60],[80]],nearby:[{"rue":"AV DE L ADOUR","num":"119","p":2,"type":"appt","surface":47,"pm2":5745,"date":"2025-12-11"},{"rue":"RUE DU NOROIT","num":"35","p":9,"type":"maison","surface":203,"pm2":7429,"date":"2025-12-08"},{"rue":"ALL DE L EGLISE","num":"10","p":6,"type":"maison","surface":140,"pm2":6929,"date":"2025-12-04"},{"rue":"ALL DE L EMPEREUR","num":"142","p":3,"type":"appt","surface":72,"pm2":4236,"date":"2025-12-01"},{"rue":"ALL GABRIEL PERI","num":"3","p":1,"type":"appt","surface":38,"pm2":4237,"date":"2025-11-19"},{"rue":"ALL GABRIEL PERI","num":"3","p":3,"type":"appt","surface":71,"pm2":3859,"date":"2025-11-12"},{"rue":"ALL LOU BASTA","num":"22","p":5,"type":"maison","surface":108,"pm2":3241,"date":"2025-10-31"},{"rue":"ALL DOU BROY BOS","num":"9","p":4,"type":"maison","surface":100,"pm2":6921,"date":"2025-10-16"},{"rue":"ALL DU CHANOINE ST LAURENT","num":"7","p":4,"type":"maison","surface":85,"pm2":6976,"date":"2025-10-10"},{"rue":"RUE HENRI RENERIC","num":"8","p":4,"type":"maison","surface":104,"pm2":6942,"date":"2025-10-06"},{"rue":"ALL DES ROSSIGNOLS","num":"14","p":4,"type":"appt","surface":80,"pm2":3125,"date":"2025-08-22"},{"rue":"ALL DE L EMPEREUR","num":"118","p":2,"type":"appt","surface":46,"pm2":5652,"date":"2025-08-13"},{"rue":"ALL DE L EMPEREUR","num":"24","p":2,"type":"appt","surface":33,"pm2":7121,"date":"2025-08-01"},{"rue":"AV DE L ADOUR","num":"103","p":3,"type":"appt","surface":63,"pm2":7302,"date":"2025-07-02"},{"rue":"AV DE LA HARGOUETTE","num":"32","p":6,"type":"maison","surface":143,"pm2":7406,"date":"2025-06-30"}]},
+{id:"brindos",name:{"fr":"Brindos","en":"Brindos","es":"Brindos"},zone:{"fr":"Anglet · Sud résidentiel","en":"Anglet · Residential south","es":"Anglet · Sur residencial"},lat:43.4747,lon:-1.5181,priceAppt:4973,evo:"+29",eLabel:"+29% (2019→2025)",nTx:592,pm2Maison:5679,nMaison:31,history:[3898,4199,4472,5420,5201,4897,5044],years:["2019","2020","2021","2022","2023","2024","2025"],badge:{"label":{"fr":"Marché dynamique","en":"Dynamic market","es":"Mercado dinámico"},"cls":"badge-warm"},ai:{"fr":"Autour du lac de Brindos et vers Sutar, le sud résidentiel d'Anglet. Prix moyen 2024–2025 : <strong>4 970 €/m²</strong> pour les appartements et <strong>5 680 €/m²</strong> pour les maisons : les grandes surfaces les plus abordables de la ville, en hausse de <strong>+29 %</strong> depuis 2019.","en":"Around Brindos lake and towards Sutar, Anglet's residential south. 2024–2025 average: <strong>€4,970/m²</strong> for apartments and <strong>€5,680/m²</strong> for houses: the city's most affordable family homes, up <strong>+29%</strong> since 2019.","es":"Alrededor del lago de Brindos y hacia Sutar, el sur residencial de Anglet. Media 2024–2025: <strong>4.970 €/m²</strong> en apartamentos y <strong>5.680 €/m²</strong> en casas: las viviendas familiares más asequibles de la ciudad."},scores:[[10],[40],[85],[85]],nearby:[{"rue":"ALL DES NOISETIERS","num":"5","p":3,"type":"appt","surface":67,"pm2":5179,"date":"2025-12-19"},{"rue":"ALL ANDRE PUYADE","num":"18","p":2,"type":"appt","surface":48,"pm2":5104,"date":"2025-12-15"},{"rue":"ALL ANDRE PUYADE","num":"12","p":2,"type":"appt","surface":47,"pm2":4745,"date":"2025-12-11"},{"rue":"ALL DES NOISETIERS","num":"14","p":3,"type":"appt","surface":67,"pm2":5597,"date":"2025-12-05"},{"rue":"CHE DE L ERMITE","num":"9","p":2,"type":"maison","surface":50,"pm2":5400,"date":"2025-11-28"},{"rue":"AV DE BRINDOS","num":"7","p":3,"type":"maison","surface":110,"pm2":4545,"date":"2025-11-26"},{"rue":"AV DE BIARRITZ","num":"10","p":4,"type":"appt","surface":74,"pm2":4306,"date":"2025-11-25"},{"rue":"RUE DE LA TOUR DE LANNES","num":"11","p":4,"type":"maison","surface":129,"pm2":6240,"date":"2025-11-24"},{"rue":"ALL SAINT VICTOR","num":"18","p":2,"type":"appt","surface":32,"pm2":6250,"date":"2025-11-20"},{"rue":"AV D ESPAGNE","num":"32","p":3,"type":"appt","surface":57,"pm2":5088,"date":"2025-11-18"},{"rue":"AV DE BIARRITZ","num":"39","p":3,"type":"appt","surface":82,"pm2":4687,"date":"2025-11-14"},{"rue":"ALL DU VERGER","num":"8","p":4,"type":"maison","surface":105,"pm2":6609,"date":"2025-11-04"},{"rue":"ALL ST VICTOR","num":"16","p":2,"type":"appt","surface":33,"pm2":5788,"date":"2025-10-28"},{"rue":"AV D ESPAGNE","num":"38","p":2,"type":"appt","surface":41,"pm2":4306,"date":"2025-10-15"},{"rue":"CHE DU BOIS","num":"5","p":5,"type":"maison","surface":128,"pm2":5743,"date":"2025-10-03"}]},
+{id:"quintaou",name:{"fr":"Quintaou · Mairie","en":"Quintaou · Town hall","es":"Quintaou · Ayuntamiento"},zone:{"fr":"Anglet · Centre-ville","en":"Anglet · City centre","es":"Anglet · Centro"},lat:43.4844,lon:-1.5131,priceAppt:4744,evo:"+30",eLabel:"+30% (2019→2025)",nTx:968,pm2Maison:6739,nMaison:50,history:[3739,3846,4174,4809,4951,4599,4878],years:["2019","2020","2021","2022","2023","2024","2025"],badge:{"label":{"fr":"Le plus accessible","en":"Most affordable","es":"El más asequible"},"cls":"badge-cool"},ai:{"fr":"Le cœur administratif et culturel d'Anglet, autour de la mairie et du théâtre de Quintaou. Prix moyen 2024–2025 : <strong>4 740 €/m²</strong>, le plus accessible des six quartiers, avec le plus gros volume de ventes de la ville (968 depuis 2019) et une hausse de <strong>+30 %</strong> depuis 2019.","en":"Anglet's administrative and cultural heart, around the town hall and the Quintaou theatre. 2024–2025 average: <strong>€4,740/m²</strong>, the most affordable of the six, with the city's highest sales volume (968 since 2019) and a <strong>+30%</strong> rise since 2019.","es":"El corazón administrativo y cultural de Anglet, en torno al ayuntamiento y el teatro de Quintaou. Media 2024–2025: <strong>4.740 €/m²</strong>, el más asequible de los seis barrios, con el mayor volumen de ventas de la ciudad."},scores:[[10],[80],[50],[90]],nearby:[{"rue":"PARC DE LEMBEYE","num":"6","p":3,"type":"appt","surface":57,"pm2":3404,"date":"2025-12-31"},{"rue":"AV DE MAIGNON","num":"3","p":2,"type":"appt","surface":42,"pm2":3626,"date":"2025-12-30"},{"rue":"AV DE MAIGNON","num":"3","p":1,"type":"appt","surface":34,"pm2":4229,"date":"2025-12-29"},{"rue":"AV DE MAIGNON","num":"3","p":1,"type":"appt","surface":34,"pm2":4688,"date":"2025-12-29"},{"rue":"RES DU CENTRE","p":3,"type":"appt","surface":60,"pm2":3583,"date":"2025-12-18"},{"rue":"RUE DE SALIS","num":"10","p":2,"type":"appt","surface":62,"pm2":6371,"date":"2025-12-18"},{"rue":"AV DE MAIGNON","num":"11","p":1,"type":"appt","surface":28,"pm2":5286,"date":"2025-12-12"},{"rue":"RUE DE SALIS","num":"1","p":2,"type":"appt","surface":44,"pm2":6300,"date":"2025-12-11"},{"rue":"PARC DE LEMBEYE","num":"1","p":5,"type":"appt","surface":80,"pm2":3813,"date":"2025-12-11"},{"rue":"RUE DE JOUANETOTE","num":"70","p":4,"type":"appt","surface":80,"pm2":3071,"date":"2025-12-04"},{"rue":"ALL DES MIMOSAS","num":"8","p":4,"type":"appt","surface":75,"pm2":6665,"date":"2025-11-27"},{"rue":"AV DE BRINDOS","num":"7","p":3,"type":"maison","surface":110,"pm2":4545,"date":"2025-11-26"},{"rue":"AV DE BIARRITZ","num":"10","p":4,"type":"appt","surface":74,"pm2":4306,"date":"2025-11-25"},{"rue":"AV JEAN LEON LAPORTE","num":"3","p":4,"type":"appt","surface":80,"pm2":4616,"date":"2025-11-25"},{"rue":"RUE DES QUATRE CANTONS","num":"39","p":2,"type":"appt","surface":50,"pm2":6120,"date":"2025-11-12"}]}
 ];
-
-let currentZone = null, currentGeo = null;
-let chartInstance = null;
-const isAGL = f => f?.properties?.citycode === AGL;
-
-// ── CHIPS ─────────────────────────────────────────────────────────────────────
-function analyzeZone(zoneId) {
-  const zone = ZONES.find(z => z.id === zoneId);
-  if (!zone) return;
-  document.getElementById('addressInput').value = '';
-  hideError();
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  document.getElementById('chip-' + zoneId)?.classList.add('active');
-  render(zone, { street: zone.name[LANG], numero: '', isChip: true });
+let currentZone=null,currentGeo=null,currentTxList=[],txExpanded=false,chartInstance=null;
+const isBZC=f=>f?.properties?.citycode===BZC;
+function fetchDVF(zone){currentTxList=zone.nearby;document.getElementById('txSource').textContent='DVF 2019–2025'+(zone.nTx?' · '+zone.nTx.toLocaleString('fr-FR')+' '+t('sales'):'');renderTxList();}
+function renderTxList(){
+const dateLoc=DATE_LOC[LANG];
+const rows=currentTxList.map((tx,i)=>{const d=new Date(tx.date).toLocaleDateString(dateLoc,{month:'short',year:'numeric'});const typeL=t(tx.type||'appt')+(tx.p?(tx.type==='maison'?' '+tx.p+'p':' T'+tx.p):'');const addr=tx.rue?(tx.num?tx.num+' ':'')+tx.rue:null;const addrHtml=addr?'<span class="sample-addr">'+addr+' <em style="font-size:10px;color:var(--text-tertiary);font-weight:400">'+typeL+'</em></span>':'<span class="sample-addr"><em style="font-size:11px;color:var(--text-secondary);font-style:normal">'+typeL+'</em></span>';const surf=tx.surface?'<span class="sample-meta"><i class="ti ti-arrows-diagonal"></i>'+tx.surface+' m²</span>':'';const floor=tx.floor?'<span class="sample-meta"><i class="ti ti-stairs"></i>'+tx.floor+'</span>':'';const hidden=(!txExpanded&&i>=SHOW)?' style="display:none"':'';return'<div class="sample-item"'+hidden+'><div class="sample-row1">'+addrHtml+'<span class="sample-price">'+tx.pm2.toLocaleString('fr-FR')+' €/m²</span></div><div class="sample-row2">'+surf+floor+'<span class="sample-meta">'+d+'</span></div></div>';}).join('');
+const extra=currentTxList.length-SHOW;const btn=extra>0?'<button class="btn-voir-plus" onclick="toggleTx()"><i class="ti '+(txExpanded?'ti-chevron-up':'ti-chevron-down')+'"></i>'+(txExpanded?t('voirMoins'):t('voirPlus')+' ('+extra+')')+'</button>':'';
+document.getElementById('sampleList').innerHTML=rows+btn;
 }
-
-// ── SAISIE LIBRE ──────────────────────────────────────────────────────────────
-async function analyzeInput() {
-  const addr = document.getElementById('addressInput').value.trim();
-  if (!addr) return;
-  document.getElementById('loader').classList.add('visible');
-  document.getElementById('results').classList.remove('visible');
-  document.getElementById('btnSearch').disabled = true;
-  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-  hideError();
-  try {
-    document.getElementById('loaderStep').textContent = t('loaderGeo');
-    const geo = await geocodeAnglet(addr);
-    document.getElementById('loaderStep').textContent = t('loaderAnalyze');
-    render(detectZone(geo.lat, geo.lon), geo);
-  } catch(e) { showError(e.message); }
-  finally {
-    document.getElementById('loader').classList.remove('visible');
-    document.getElementById('btnSearch').disabled = false;
-  }
+function toggleTx(){txExpanded=!txExpanded;renderTxList();}
+function analyzeZone(zoneId){const zone=ZONES.find(z=>z.id===zoneId);if(!zone)return;document.getElementById('addressInput').value='';hideError();document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.getElementById('chip-'+zoneId)?.classList.add('active');txExpanded=false;render(zone,{street:zone.name[LANG],isChip:true},true);}
+async function analyzeInput(){const addr=document.getElementById('addressInput').value.trim();if(!addr)return;document.getElementById('loader').classList.add('visible');document.getElementById('results').classList.remove('visible');document.getElementById('btnSearch').disabled=true;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));hideError();txExpanded=false;try{document.getElementById('loaderStep').textContent=t('loaderGeo');const geo=await geocodeAnglet(addr);document.getElementById('loaderStep').textContent=t('loaderAnalyze');render(detectZone(geo.lat,geo.lon),geo,true);}catch(e){showError(e.message);}finally{document.getElementById('loader').classList.remove('visible');document.getElementById('btnSearch').disabled=false;}}
+async function geocodeAnglet(addr){let f=await banFirst(addr,true);if(!f)f=await banFirst(addr,false);if(!f)throw new Error(t('errNotFound'));if(!isBZC(f))throw new Error(t('errOtherCity')(f.properties.city||'?'));return{lat:f.geometry.coordinates[1],lon:f.geometry.coordinates[0],label:f.properties.label,street:f.properties.street||f.properties.name,isChip:false};}
+async function banFirst(q,useCitycode){const p=new URLSearchParams({q,limit:5});if(useCitycode)p.set('citycode',BZC);const res=await fetch(BAN+'?'+p);if(!res.ok)return null;const data=await res.json();return(data.features||[]).find(isBZC)||null;}
+function haversine(la1,lo1,la2,lo2){const R=6371000,r=Math.PI/180,dla=(la2-la1)*r,dlo=(lo2-lo1)*r,a=Math.sin(dla/2)**2+Math.cos(la1*r)*Math.cos(la2*r)*Math.sin(dlo/2)**2;return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
+function detectZone(lat,lon){return ZONES.reduce((b,z)=>haversine(lat,lon,z.lat,z.lon)<haversine(lat,lon,b.lat,b.lon)?z:b);}
+function render(zone,geo,fetchLive){
+currentZone=zone;currentGeo=geo;
+document.getElementById('streetName').textContent=geo.isChip?zone.name[LANG]:(geo.street||geo.label);
+document.getElementById('streetSub').textContent=zone.zone[LANG];
+const b=document.getElementById('marketBadge');b.textContent=zone.badge.label[LANG];b.className='badge '+zone.badge.cls;
+document.getElementById('priceAppt').textContent=zone.priceAppt.toLocaleString('fr-FR');
+const evo=document.getElementById('evolution');evo.textContent=zone.evo+'%';evo.className='stat-value '+(zone.evo.startsWith('+')?'trend-up':'trend-down');
+document.getElementById('evolutionSub').textContent=zone.eLabel;
+document.getElementById('aiText').innerHTML=zone.ai[LANG];
+const sl=t('scoreLabels');document.getElementById('scoreRow').innerHTML=zone.scores.map(([v],i)=>'<div class="score-item"><div class="score-bar-bg"><div class="score-bar-fill" style="width:0%" data-t="'+v+'%"></div></div><div class="score-key">'+sl[i]+'</div></div>').join('');
+setTimeout(()=>document.querySelectorAll('.score-bar-fill').forEach(el=>el.style.width=el.dataset.t),80);
+fetchDVF(zone);
+renderChart(zone.history,zone.years);
+document.getElementById('results').classList.add('visible');
 }
-
-// ── GÉOCODAGE ─────────────────────────────────────────────────────────────────
-async function geocodeAnglet(addr) {
-  let f = await banFirst(addr, true);
-  if (!f) f = await banFirst(addr, false);
-  if (!f) throw new Error(t('errNotFound'));
-  if (!isAGL(f)) throw new Error(t('errOtherCity')(f.properties.city || '?'));
-  return {
-    lat: f.geometry.coordinates[1], lon: f.geometry.coordinates[0],
-    label: f.properties.label,
-    street: f.properties.street || f.properties.name,
-    numero: f.properties.housenumber || '',
-    isChip: false
-  };
+function renderChart(history,years){
+if(chartInstance)chartInstance.destroy();
+document.getElementById('chartContainer').innerHTML='<canvas id="priceChart"></canvas>';
+const dark=matchMedia('(prefers-color-scheme: dark)').matches;
+chartInstance=new Chart(document.getElementById('priceChart'),{type:'line',data:{labels:years,datasets:[{data:history,borderColor:'#A31621',backgroundColor:dark?'rgba(163,22,33,.12)':'rgba(163,22,33,.07)',borderWidth:2.5,pointBackgroundColor:'#A31621',pointRadius:5,pointHoverRadius:7,fill:true,tension:0.38}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.parsed.y.toLocaleString('fr-FR')+' €/m²'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11},color:dark?'#6b6763':'#9b9b9b'}},y:{grid:{color:dark?'rgba(255,255,255,.05)':'rgba(0,0,0,.04)'},ticks:{font:{size:11},color:dark?'#6b6763':'#9b9b9b',callback:v=>v.toLocaleString('fr-FR')+' €'}}}}});
 }
-async function banFirst(q, useCitycode) {
-  const p = new URLSearchParams({ q, limit: 5 });
-  if (useCitycode) p.set('citycode', AGL);
-  const res = await fetch(`${BAN}?${p}`);
-  if (!res.ok) return null;
-  const data = await res.json();
-  return (data.features || []).find(isAGL) || null;
+function showError(msg){const e=document.getElementById('errorCard');e.innerHTML='<i class="ti ti-alert-circle" style="margin-right:6px"></i>'+msg;e.classList.add('visible');}
+function hideError(){document.getElementById('errorCard').classList.remove('visible');}
+const input=document.getElementById('addressInput'),dropdown=document.getElementById('acDropdown');
+let acResults=[],acIndex=-1,acTimer=null;
+input.addEventListener('input',()=>{clearTimeout(acTimer);const q=input.value.trim();if(q.length<3){closeDropdown();return;}acTimer=setTimeout(()=>fetchSuggestions(q),220);});
+input.addEventListener('keydown',e=>{if(e.key==='Enter'){acIndex>=0&&acResults[acIndex]?selectSuggestion(acResults[acIndex]):(closeDropdown(),analyzeInput());return;}if(e.key==='ArrowDown'){e.preventDefault();moveIndex(1);}if(e.key==='ArrowUp'){e.preventDefault();moveIndex(-1);}if(e.key==='Escape'){closeDropdown();}});
+document.addEventListener('click',e=>{if(!e.target.closest('.autocomplete-wrap'))closeDropdown();});
+async function fetchSuggestions(q){try{const res=await fetch(BAN+'?'+new URLSearchParams({q,citycode:BZC,limit:6}));if(!res.ok)throw 0;const data=await res.json();acResults=(data.features||[]).filter(isBZC);renderDropdown();}catch{closeDropdown();}}
+function renderDropdown(){if(!acResults.length){closeDropdown();return;}acIndex=-1;dropdown.innerHTML=acResults.map((f,i)=>{const p=f.properties;return'<div class="ac-item" data-i="'+i+'"><i class="ti ti-map-pin"></i><div><div class="ac-main">'+(p.name||p.street)+'</div><div class="ac-sub">'+p.postcode+' '+p.city+'</div></div></div>';}).join('');dropdown.querySelectorAll('.ac-item').forEach(el=>el.addEventListener('mousedown',e=>{e.preventDefault();selectSuggestion(acResults[+el.dataset.i]);}));dropdown.classList.add('open');}
+function moveIndex(dir){const items=dropdown.querySelectorAll('.ac-item');if(!items.length)return;items[acIndex]?.classList.remove('active');acIndex=Math.max(-1,Math.min(items.length-1,acIndex+dir));if(acIndex>=0){items[acIndex].classList.add('active');input.value=acResults[acIndex].properties.label;}}
+function selectSuggestion(f){input.value=f.properties.label;closeDropdown();analyzeInput();}
+function closeDropdown(){dropdown.classList.remove('open');acResults=[];acIndex=-1;}
+/* ===== Estimateur ===== */
+/* Pour capter les emails (leads) : créer un formulaire gratuit sur https://formspree.io, puis coller son URL ci-dessous
+   (ex : 'https://formspree.io/f/abcd1234'). Laisser vide = téléchargement direct du rapport sans email. */
+const LEAD_ENDPOINT='';
+const MAISON_PM2={"chiberta":10791,"chambre-amour":10122,"cinq-cantons":7135,"blancpignon":6431,"brindos":5679,"quintaou":6739};
+/* Moteur hyper-local : les ventes DVF sont chargées à la demande depuis dvf-api.data.gouv.fr (API Etalab, CORS ouvert),
+   par section cadastrale proche de l'adresse. Données toujours à jour, aucun fichier à maintenir. */
+const SECTIONS='000AC:43.52114,-1.51903;000AD:43.5181,-1.51959;000AE:43.51678,-1.52514;000AH:43.50949,-1.53167;000AI:43.50399,-1.53408;000AK:43.50636,-1.5283;000AL:43.51129,-1.52341;000AM:43.51385,-1.51975;000AN:43.50372,-1.50816;000AO:43.52361,-1.50764;000AR:43.51765,-1.50056;000AS:43.51659,-1.50305;000AT:43.5104,-1.50235;000AW:43.50508,-1.50284;000AX:43.50504,-1.4974;000AY:43.49828,-1.50209;000AZ:43.50036,-1.50793;000BC:43.49788,-1.50672;000BD:43.50087,-1.51453;000BE:43.49642,-1.51712;000BH:43.49336,-1.52477;000BI:43.50037,-1.51957;000BK:43.50425,-1.52211;000BL:43.50153,-1.53043;000BM:43.49744,-1.5332;000BN:43.49994,-1.53871;000BO:43.49433,-1.54381;000BP:43.49112,-1.53981;000BR:43.49421,-1.53221;000BS:43.48978,-1.53662;000BT:43.48957,-1.53073;000BV:43.48439,-1.53171;000BW:43.48587,-1.52557;000BX:43.48726,-1.52206;000BY:43.49435,-1.51307;000BZ:43.49027,-1.5158;000CD:43.48604,-1.51725;000CE:43.4861,-1.5103;000CH:43.49057,-1.50992;000CI:43.49441,-1.50795;000CK:43.49501,-1.50143;000CL:43.49148,-1.50131;000CM:43.48703,-1.50175;000CN:43.48166,-1.50763;000CO:43.48127,-1.51639;000CP:43.48239,-1.52529;000CR:43.48113,-1.532;000CS:43.47687,-1.53134;000CT:43.47889,-1.52178;000CV:43.47437,-1.52203;000CW:43.46391,-1.52124;000CX:43.47799,-1.50871;000CY:43.47429,-1.49579;000CZ:43.47049,-1.49995;000DE:43.45796,-1.50299;000DH:43.45511,-1.49867;000DI:43.45893,-1.51676;000DK:43.46183,-1.52409'.split(';').map(s=>{const a=s.split(':'),c=a[1].split(',');return{id:a[0],lat:+c[0],lon:+c[1]};});
+const IDX_APPT={"2019":1.286,"2020":1.192,"2021":1.106,"2022":0.989,"2023":0.984,"2024":1.018,"2025":0.983,"2026":1};
+const IDX_MAISON={"2019":1.358,"2020":1.286,"2021":1.127,"2022":0.982,"2023":0.933,"2024":1.016,"2025":0.985,"2026":1};
+const DVF_CACHE={};
+async function fetchSection(sid){
+if(DVF_CACHE[sid])return DVF_CACHE[sid];
+const res=await fetch('https://dvf-api.data.gouv.fr/mutations/64024/'+sid,{signal:AbortSignal.timeout(9000)});
+if(!res.ok)throw new Error('HTTP '+res.status);
+const j=await res.json();
+const by={};
+for(const r of j.data||[]){(by[r.id_mutation]=by[r.id_mutation]||[]).push(r);}
+const out=[];
+for(const mid in by){
+const g=by[mid];
+const nat=g[0].nature_mutation||'';
+if(nat!=='Vente'&&nat.indexOf('futur')===-1)continue;
+const locals=g.filter(r=>r.type_local==='Appartement'||r.type_local==='Maison');
+if(!locals.length)continue;
+if(new Set(locals.map(r=>r.type_local)).size>1)continue;
+if(g.some(r=>r.type_local&&['Dépendance','Appartement','Maison'].indexOf(r.type_local)===-1))continue;
+const seen=new Set();
+const uniq=locals.filter(r=>{const k=r.surface_reelle_bati+'|'+r.adresse_nom_voie+'|'+r.adresse_numero;if(seen.has(k))return false;seen.add(k);return true;});
+const surf=uniq.reduce((s,r)=>s+(parseFloat(r.surface_reelle_bati)||0),0);
+const val=parseFloat(g[0].valeur_fonciere)||0;
+if(surf<9||val<10000)continue;
+const pm2=val/surf;if(pm2<1000||pm2>35000)continue;
+const r0=uniq[0];const la=parseFloat(r0.latitude),lo=parseFloat(r0.longitude);
+if(!la||!lo)continue;
+out.push({date:r0.date_mutation,year:+String(r0.date_mutation).slice(0,4),type:r0.type_local==='Appartement'?'appt':'maison',surface:Math.round(surf),pm2:Math.round(pm2),lat:la,lon:lo,num:(r0.adresse_numero&&+r0.adresse_numero<5000)?String(r0.adresse_numero):null,rue:r0.adresse_nom_voie||null,p:parseInt(r0.nombre_pieces_principales)||null});
 }
-
-// ── VORONOI ───────────────────────────────────────────────────────────────────
-function haversine(la1,lo1,la2,lo2) {
-  const R=6371000, r=Math.PI/180, dla=(la2-la1)*r, dlo=(lo2-lo1)*r;
-  const a=Math.sin(dla/2)**2+Math.cos(la1*r)*Math.cos(la2*r)*Math.sin(dlo/2)**2;
-  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+DVF_CACHE[sid]=out;return out;
 }
-function detectZone(lat,lon) {
-  return ZONES.reduce((b,z)=>haversine(lat,lon,z.lat,z.lon)<haversine(lat,lon,b.lat,b.lon)?z:b);
+async function localSales(lat,lon){
+const near=SECTIONS.map(s=>({s,d:haversine(lat,lon,s.lat,s.lon)})).sort((a,b)=>a.d-b.d).filter(x=>x.d<1300).slice(0,7);
+const lists=await Promise.all(near.map(x=>fetchSection(x.s.id)));
+return [].concat.apply([],lists);
 }
-
-// ── RENDU ─────────────────────────────────────────────────────────────────────
-function render(zone, geo) {
-  currentZone = zone; currentGeo = geo;
-  document.getElementById('streetName').textContent  = geo.isChip ? zone.name[LANG] : (geo.street || geo.label);
-  document.getElementById('streetSub').textContent   = zone.zone[LANG];
-  const b = document.getElementById('marketBadge');
-  b.textContent = zone.badge.label[LANG]; b.className = 'badge ' + zone.badge.cls;
-  document.getElementById('priceM2').textContent     = zone.price.toLocaleString('fr-FR');
-  document.getElementById('medianPrice').textContent = zone.median.toLocaleString('fr-FR');
-  document.getElementById('txCount').textContent     = zone.tx;
-  const evo = document.getElementById('evolution');
-  evo.textContent = zone.evo + '%';
-  evo.className = 'stat-value ' + (zone.evo.startsWith('+') ? 'trend-up' : 'trend-down');
-  document.getElementById('evolutionSub').textContent = zone.eLabel;
-  document.getElementById('aiText').innerHTML = zone.ai[LANG];
-
-  const scoreLabels = t('scoreLabels');
-  document.getElementById('scoreRow').innerHTML = zone.scores.map(([v], i) =>
-    `<div class="score-item"><div class="score-bar-bg"><div class="score-bar-fill" style="width:0%" data-t="${v}%"></div></div><div class="score-key">${scoreLabels[i]}</div></div>`
-  ).join('');
-  setTimeout(() => document.querySelectorAll('.score-bar-fill').forEach(el => el.style.width = el.dataset.t), 80);
-
-  const dateLoc = DATE_LOC[LANG];
-  const txList = geo.isChip ? zone.nearby : [
-    { rue: (geo.street || '').toUpperCase(), num: geo.numero || '—', type: 'appt', surface: null, floor: null, pm2: zone.price, date: '2025-06-01', isSearched: true },
-    ...zone.nearby.filter(tx => tx.rue !== (geo.street || '').toUpperCase()).slice(0, 2)
-  ];
-
-  document.getElementById('sampleList').innerHTML = txList.map(tx => {
-    const d    = new Date(tx.date).toLocaleDateString(dateLoc, { month: 'short', year: 'numeric' });
-    const addr = (tx.num && tx.num !== '—' ? tx.num + ' ' : '') + tx.rue;
-    const ytag = tx.isSearched ? `<span class="you-tag">${t('youTag')}</span>` : '';
-    const typeLabel = t(tx.type);
-    const surfaceMeta = tx.surface ? `<span class="sample-meta"><i class="ti ti-arrows-diagonal"></i>${tx.surface} m²</span>` : '';
-    const floorMeta   = tx.floor   ? `<span class="sample-meta"><i class="ti ti-stairs"></i>${tx.floor}</span>` : '';
-    const dateMeta    = `<span class="sample-meta">${d}</span>`;
-    return `<div class="${tx.isSearched ? 'sample-item searched' : 'sample-item'}">
-      <div class="sample-row1">
-        <span class="sample-addr">${addr}${ytag} <em style="font-size:10px;color:var(--text-tertiary);font-weight:400">${typeLabel}</em></span>
-        <span class="sample-price">${tx.pm2.toLocaleString('fr-FR')} €/m²</span>
-      </div>
-      <div class="sample-row2">${surfaceMeta}${floorMeta}${dateMeta}</div>
-    </div>`;
-  }).join('');
-
-  renderChart(zone.history, zone.years);
-  document.getElementById('results').classList.add('visible');
+let estGeo=null,efTimer=null;
+const efA=document.getElementById('efAddr'),efDd=document.getElementById('efAcDropdown');
+efA.addEventListener('input',()=>{estGeo=null;clearTimeout(efTimer);const q=efA.value.trim();if(q.length<3){efDd.classList.remove('open');return;}efTimer=setTimeout(async()=>{try{const res=await fetch(BAN+'?'+new URLSearchParams({q,citycode:BZC,limit:5}));if(!res.ok)return;const data=await res.json();const fs=(data.features||[]).filter(isBZC);if(!fs.length){efDd.classList.remove('open');return;}efDd.innerHTML=fs.map((ft,i)=>'<div class="ac-item" data-i="'+i+'"><i class="ti ti-map-pin"></i><div><div class="ac-main">'+(ft.properties.name||ft.properties.street)+'</div><div class="ac-sub">'+ft.properties.postcode+' '+ft.properties.city+'</div></div></div>').join('');efDd.querySelectorAll('.ac-item').forEach(el=>el.addEventListener('mousedown',ev=>{ev.preventDefault();const ft=fs[+el.dataset.i];estGeo={lat:ft.geometry.coordinates[1],lon:ft.geometry.coordinates[0],label:ft.properties.label};efA.value=ft.properties.label;efDd.classList.remove('open');}));efDd.classList.add('open');}catch(e){}},220);});
+let lastEst=null;
+document.getElementById('estForm').addEventListener('submit',e=>{e.preventDefault();runEstimate();});
+async function runEstimate(){
+const $=id=>document.getElementById(id);
+const f={type:$('efType').value,surface:+$('efSurface').value,pieces:+$('efPieces').value||0,etage:$('efEtage').value,etat:$('efEtat').value,terrasse:+$('efTerrasse').value||0,parking:+$('efParking').value||0,asc:$('efAsc').checked,vue:$('efVue').checked};
+const addr=$('efAddr').value.trim();
+if(!f.surface||f.surface<9||!addr)return;
+const btn=document.querySelector('#estForm button[type=submit]'),btnSpan=btn.querySelector('span'),oldTxt=btnSpan.textContent;
+btn.disabled=true;btnSpan.textContent=t('loaderAnalyze');$('estErr').style.display='none';
+try{
+let geo=estGeo;
+if(!geo){const ft=await banFirst(addr,true);if(!ft)throw new Error(t('errNotFound'));geo={lat:ft.geometry.coordinates[1],lon:ft.geometry.coordinates[0],label:ft.properties.label};estGeo=geo;}
+const zone=detectZone(geo.lat,geo.lon);
+let base=f.type==='maison'?(zone.pm2Maison||MAISON_PM2[zone.id]):zone.priceAppt;
+let basisTxt=t('estZoneFallback');
+let comps=zone.nearby.filter(c=>c.type===f.type).slice(0,6);
+try{
+const sales=await localSales(geo.lat,geo.lon);
+const IDX=f.type==='appt'?IDX_APPT:IDX_MAISON;
+let cands=sales.filter(s=>s.type===f.type&&IDX[s.year]).map(s=>Object.assign({},s,{d:Math.round(haversine(geo.lat,geo.lon,s.lat,s.lon))})).filter(s=>s.d<=1000);
+if(cands.length>=8){const ps=cands.map(s=>s.pm2*IDX[s.year]).sort((a,b)=>a-b);const med=ps[ps.length>>1];cands=cands.filter(s=>{const v=s.pm2*IDX[s.year];return v>med*0.45&&v<med*1.9;});}
+if(cands.filter(s=>s.d<=600).length>=6){
+let sw=0,sv=0;
+for(const s of cands){const w=Math.exp(-(s.d*s.d)/245000)*Math.pow(0.85,2025-s.year);sw+=w;sv+=w*s.pm2*IDX[s.year];}
+base=sv/sw;
+basisTxt=t('estLocalN').replace('{n}',cands.length);
+comps=cands.sort((a,b)=>a.d-b.d).filter(s=>s.year>=2023).slice(0,6);
 }
-
-function renderChart(history, years) {
-  if (chartInstance) chartInstance.destroy();
-  document.getElementById('chartContainer').innerHTML = '<canvas id="priceChart"></canvas>';
-  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  chartInstance = new Chart(document.getElementById('priceChart'), {
-    type: 'line',
-    data: { labels: years, datasets: [{ data: history, borderColor: '#1A7A6E',
-      backgroundColor: dark ? 'rgba(26,122,110,.12)' : 'rgba(26,122,110,.07)',
-      borderWidth: 2.5, pointBackgroundColor: '#1A7A6E', pointRadius: 5, pointHoverRadius: 7, fill: true, tension: 0.38 }] },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' ' + c.parsed.y.toLocaleString('fr-FR') + ' €/m²' } } },
-      scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 11 }, color: dark ? '#6b6763' : '#9b9b9b' } },
-        y: { grid: { color: dark ? 'rgba(255,255,255,.05)' : 'rgba(0,0,0,.04)' },
-             ticks: { font: { size: 11 }, color: dark ? '#6b6763' : '#9b9b9b', callback: v => v.toLocaleString('fr-FR') + ' €' } }
-      }
-    }
-  });
+}catch(e){}
+let coef=1+({neuf:0.08,bon:0,rafraichir:-0.08,renover:-0.18}[f.etat]||0);
+if(f.type==='appt'){if(f.etage==='rdc')coef-=0.05;if(f.etage==='dernier')coef+=0.05;if(f.asc&&f.etage!=='rdc')coef+=0.03;}
+if(f.vue)coef+=0.12;
+if(f.surface<30)coef+=0.08;else if(f.surface<50)coef+=0.04;else if(f.surface>100)coef-=0.04;
+const raw=f.surface*base*coef+Math.min(f.terrasse,40)*base*0.3+f.parking*12000;
+const r={val:Math.round(raw/1000)*1000,low:Math.round(raw*0.9/1000)*1000,high:Math.round(raw*1.1/1000)*1000,pm2:Math.round(raw/f.surface),base:Math.round(base)};
+lastEst={f,r,zone,geo,comps,basisTxt};
+$('estValue').textContent=r.val.toLocaleString('fr-FR')+' €';
+$('estRange').textContent=r.low.toLocaleString('fr-FR')+' € – '+r.high.toLocaleString('fr-FR')+' € · '+r.pm2.toLocaleString('fr-FR')+' €/m² · '+basisTxt;
+$('estOut').style.display='block';
+const gate=!!LEAD_ENDPOINT;
+$('estGate').style.display=gate?'flex':'none';
+$('estPriv').style.display=gate?'block':'none';
+$('estDirect').style.display=gate?'none':'flex';
+if($('estOut').scrollIntoView)$('estOut').scrollIntoView({behavior:'smooth',block:'nearest'});
+}catch(err){$('estErr').textContent=err&&err.message?err.message:String(err);$('estErr').style.display='block';}
+finally{btn.disabled=false;btnSpan.textContent=oldTxt;}
 }
-
-function showError(msg) { const e = document.getElementById('errorCard'); e.innerHTML = '<i class="ti ti-alert-circle" style="margin-right:6px"></i>' + msg; e.classList.add('visible'); }
-function hideError() { document.getElementById('errorCard').classList.remove('visible'); }
-
-// ── AUTOCOMPLETE ──────────────────────────────────────────────────────────────
-const input = document.getElementById('addressInput'), dropdown = document.getElementById('acDropdown');
-let acResults = [], acIndex = -1, acTimer = null;
-input.addEventListener('input', () => {
-  clearTimeout(acTimer); const q = input.value.trim();
-  if (q.length < 3) { closeDropdown(); return; }
-  acTimer = setTimeout(() => fetchSuggestions(q), 220);
-});
-input.addEventListener('keydown', e => {
-  if (e.key === 'Enter') { acIndex >= 0 && acResults[acIndex] ? selectSuggestion(acResults[acIndex]) : (closeDropdown(), analyzeInput()); return; }
-  if (e.key === 'ArrowDown') { e.preventDefault(); moveIndex(1); }
-  if (e.key === 'ArrowUp')   { e.preventDefault(); moveIndex(-1); }
-  if (e.key === 'Escape')    { closeDropdown(); }
-});
-document.addEventListener('click', e => { if (!e.target.closest('.autocomplete-wrap')) closeDropdown(); });
-async function fetchSuggestions(q) {
-  try {
-    const res = await fetch(`${BAN}?${new URLSearchParams({ q, citycode: AGL, limit: 6 })}`);
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    acResults = (data.features || []).filter(isAGL);
-    renderDropdown();
-  } catch(e) { closeDropdown(); }
+async function leadAndReport(){
+const em=document.getElementById('efEmail').value.trim();
+if(!em||!em.includes('@')||!lastEst)return;
+try{await fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:em,adresse:lastEst.geo?lastEst.geo.label:'',type:lastEst.f.type,quartier:lastEst.zone.id,surface:lastEst.f.surface,pieces:lastEst.f.pieces,estimation:lastEst.r.val,site:'anglet.immo'})});}catch(e){}
+openReport();
 }
-function renderDropdown() {
-  if (!acResults.length) { closeDropdown(); return; }
-  acIndex = -1;
-  dropdown.innerHTML = acResults.map((f, i) => { const p = f.properties;
-    return `<div class="ac-item" data-i="${i}"><i class="ti ti-map-pin"></i><div><div class="ac-main">${p.name || p.street}</div><div class="ac-sub">${p.postcode} ${p.city}</div></div></div>`;
-  }).join('');
-  dropdown.querySelectorAll('.ac-item').forEach(el => el.addEventListener('mousedown', e => { e.preventDefault(); selectSuggestion(acResults[+el.dataset.i]); }));
-  dropdown.classList.add('open');
+function openReport(){
+if(!lastEst)return;
+const{f,r,zone,geo,comps,basisTxt}=lastEst;
+const dloc=DATE_LOC[LANG];
+const tl=c=>t(c.type)+(c.p?(c.type==='maison'?' '+c.p+'p':' T'+c.p):'');
+const rows=comps.map(c=>'<tr><td>'+(c.rue?(c.num?c.num+' ':'')+c.rue:'—')+'</td><td>'+tl(c)+'</td><td>'+c.surface+' m²</td><td>'+c.pm2.toLocaleString('fr-FR')+' €/m²</td><td>'+(c.d!=null?c.d+' m':'')+'</td><td>'+new Date(c.date).toLocaleDateString(dloc,{month:'short',year:'numeric'})+'</td></tr>').join('');
+const esc=s=>String(s).replace(/</g,'&lt;');
+const html='<!DOCTYPE html><html lang="'+LANG+'"><head><meta charset="utf-8"><title>'+t('estReportTitle')+' · Anglet.immo</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:#1a1a1a;max-width:640px;margin:2rem auto;padding:0 1.5rem}h1{font-size:22px}h1 span{color:#A31621}h2{font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:#6b6b6b;margin-top:30px}.val{font-size:34px;font-weight:700;color:#A31621;margin:6px 0}.range{color:#6b6b6b;font-size:14px}table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}td,th{padding:7px 6px;border-bottom:1px solid #eee;text-align:left}.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;font-size:13px;margin-top:10px}.grid b{font-weight:600}.meta{color:#9b9b9b;font-size:11px;margin-top:28px;line-height:1.6}button{margin-top:18px;padding:9px 16px;background:#A31621;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer}@media print{button{display:none}}</style></head><body>'
++'<h1>Anglet<span>.immo</span> · '+t('estReportTitle')+'</h1>'
++'<div class="grid">'
++'<div style="grid-column:1/-1"><b>'+t('estAddr')+'</b> : '+esc(geo?geo.label:zone.name[LANG])+'</div>'
++'<div><b>'+t('estType')+'</b> : '+t(f.type==='appt'?'estTypeAppt':'estTypeMaison')+'</div>'
++'<div><b>'+t('estZone')+'</b> : '+esc(zone.name[LANG])+'</div>'
++'<div><b>'+t('estSurface')+'</b> : '+f.surface+' m²</div>'
++'<div><b>'+t('estPieces')+'</b> : '+f.pieces+'</div>'
++'<div><b>'+t('estEtat')+'</b> : '+t({neuf:'estEtatNeuf',bon:'estEtatBon',rafraichir:'estEtatRafraichir',renover:'estEtatRenover'}[f.etat])+'</div>'
++'<div><b>'+t('estTerrasse')+'</b> : '+f.terrasse+' m² · <b>'+t('estParking')+'</b> : '+f.parking+'</div>'
++'</div>'
++'<h2>'+t('estResult')+'</h2><div class="val">'+r.val.toLocaleString('fr-FR')+' €</div><div class="range">'+r.low.toLocaleString('fr-FR')+' € – '+r.high.toLocaleString('fr-FR')+' € · '+r.pm2.toLocaleString('fr-FR')+' €/m² · '+basisTxt+'</div>'
++'<h2>'+t('estComps')+'</h2><table><tr><th></th><th></th><th>m²</th><th>€/m²</th><th></th><th></th></tr>'+rows+'</table>'
++'<h2>'+t('estMethodoTitle')+'</h2><div style="font-size:13px;line-height:1.65">'+t('estMethodo').replace('{base}',r.base.toLocaleString('fr-FR'))+'</div>'
++'<div class="meta">'+t('estDisclaimer')+'<br>anglet.immo · '+new Date().toLocaleDateString(dloc)+'</div>'
++'<button onclick="window.print()">'+t('estPrint')+'</button>'
++'</body></html>';
+const w=window.open('','_blank');
+if(!w)return;
+w.document.write(html);w.document.close();
 }
-function moveIndex(dir) {
-  const items = dropdown.querySelectorAll('.ac-item'); if (!items.length) return;
-  items[acIndex]?.classList.remove('active');
-  acIndex = Math.max(-1, Math.min(items.length - 1, acIndex + dir));
-  if (acIndex >= 0) { items[acIndex].classList.add('active'); input.value = acResults[acIndex].properties.label; }
-}
-function selectSuggestion(f) { input.value = f.properties.label; closeDropdown(); analyzeInput(); }
-function closeDropdown() { dropdown.classList.remove('open'); acResults = []; acIndex = -1; }
-
-// ── INIT ──────────────────────────────────────────────────────────────────────
 setLang('fr');
+
+/* ===== Couche design « rouge basque » (thermomètre, héro, i18n design) ===== */
+const TD={
+fr:{navQuartiers:'Quartiers',navMethode:'Méthode',navCta:'Estimer mon bien',heroKicker:'Anglet · 64600 · Données DVF 2019–2025',heroH1:'Le prix du m², quartier par quartier.',heroP:'Le thermomètre des prix immobiliers à Anglet, construit sur les ventes réelles enregistrées par l\'État, et non sur des annonces. Pour acheter ou investir en connaissant le vrai marché.',heroL1:'Prix moyen appartements',heroL2:'Évolution 2019–2025',heroL3:'Quartiers analysés',thermoKicker:'Le thermomètre',thermoH2:'Six quartiers, six marchés.',sortPrix:'Par prix',sortEvo:'Par évolution',thermoNote1:'Prix moyen appartements, ventes 2024–2025 · cliquez sur un quartier pour le détail',thermoNote2:'Échelle : 0 → 8 500 €/m²',yrs:'/ 6 ans',estH2:'Combien vaut <em>vraiment</em> ce bien ?',estP:'Estimation gratuite à partir des ventes réelles DVF autour de votre adresse, sans inscription ni démarchage.',estCta:'Lancer l\'estimation gratuite',estMention:'Appartement ou maison · résultat immédiat',estAddrPh:'Adresse du bien à Anglet…',methodKicker:'La méthode',methodH2:'Des ventes réelles, pas des prix d\'annonces.',m1t:'Source officielle',m1p:'Les Demandes de Valeurs Foncières (DVF) publiées par la DGFiP et le Cerema : chaque transaction notariée, avec son prix réel.',m2t:'Six ans de recul',m2p:'Toutes les ventes de 2019 à 2025, agrégées par quartier pour lisser les à-coups et révéler les vraies tendances.',m3t:'Granularité quartier',m3p:'De Chiberta à Quintaou, plus de 3 000 € d\'écart au m² : la moyenne ville ne suffit pas pour décider.',footerData:'Données DVF · DGFiP / Cerema · 2019–2025',"note_chiberta":"Villas sous les pins, golf et plages","note_chambre-amour":"Plages, Sables d'Or, front de mer","note_cinq-cantons":"Carrefour historique, commerces","note_blancpignon":"Rive de l'Adour, quartier en mutation","note_brindos":"Lac de Brindos, sud résidentiel","note_quintaou":"Mairie, théâtre, cœur de ville"},
+en:{navQuartiers:'Districts',navMethode:'Method',navCta:'Value my property',heroKicker:'Anglet · 64600 · DVF data 2019–2025',heroH1:'Price per m², neighbourhood by neighbourhood.',heroP:'Anglet\'s property price thermometer, built on real sales recorded by the French State, not on listings. Buy or invest knowing the true market.',heroL1:'Average apartment price',heroL2:'Change 2019–2025',heroL3:'Neighbourhoods analysed',thermoKicker:'The thermometer',thermoH2:'Six neighbourhoods, six markets.',sortPrix:'By price',sortEvo:'By change',thermoNote1:'Average apartment price, 2024–2025 sales · click a neighbourhood for details',thermoNote2:'Scale: 0 → 8,500 €/m²',yrs:'/ 6 yrs',estH2:'What is this property <em>really</em> worth?',estP:'Free estimate based on real DVF sales around your address, with no sign-up and no canvassing.',estCta:'Get my free estimate',estMention:'Apartment or house · instant result',estAddrPh:'Property address in Anglet…',methodKicker:'The method',methodH2:'Real sales, not asking prices.',m1t:'Official source',m1p:'The DVF records published by the DGFiP and Cerema: every notarised transaction, with its actual price.',m2t:'Six years of depth',m2p:'Every sale from 2019 to 2025, aggregated by neighbourhood to smooth out noise and reveal true trends.',m3t:'Neighbourhood granularity',m3p:'From Chiberta to Quintaou, over €3,000 difference per m²: the city average isn\'t enough to decide.',footerData:'DVF data · DGFiP / Cerema · 2019–2025',"note_chiberta":"Villas under the pines, golf and beaches","note_chambre-amour":"Beaches, Sables d'Or, seafront","note_cinq-cantons":"Historic crossroads, shops","note_blancpignon":"Adour riverside, in transition","note_brindos":"Brindos lake, residential south","note_quintaou":"Town hall, theatre, city centre"},
+es:{navQuartiers:'Barrios',navMethode:'Método',navCta:'Estimar mi propiedad',heroKicker:'Anglet · 64600 · Datos DVF 2019–2025',heroH1:'El precio del m², barrio a barrio.',heroP:'El termómetro de precios inmobiliarios de Anglet, construido sobre ventas reales registradas por el Estado francés, no sobre anuncios. Para comprar o invertir conociendo el mercado real.',heroL1:'Precio medio apartamentos',heroL2:'Evolución 2019–2025',heroL3:'Barrios analizados',thermoKicker:'El termómetro',thermoH2:'Seis barrios, seis mercados.',sortPrix:'Por precio',sortEvo:'Por evolución',thermoNote1:'Precio medio apartamentos, ventas 2024–2025 · haga clic en un barrio para el detalle',thermoNote2:'Escala: 0 → 8.500 €/m²',yrs:'/ 6 años',estH2:'¿Cuánto vale <em>realmente</em> esta propiedad?',estP:'Estimación gratuita a partir de ventas reales DVF alrededor de su dirección, sin registro ni llamadas comerciales.',estCta:'Obtener mi estimación gratuita',estMention:'Apartamento o casa · resultado inmediato',estAddrPh:'Dirección del bien en Anglet…',methodKicker:'El método',methodH2:'Ventas reales, no precios de anuncios.',m1t:'Fuente oficial',m1p:'Los registros DVF publicados por la DGFiP y el Cerema: cada transacción notarial, con su precio real.',m2t:'Seis años de perspectiva',m2p:'Todas las ventas de 2019 a 2025, agregadas por barrio para suavizar los altibajos y revelar las tendencias reales.',m3t:'Granularidad de barrio',m3p:'De Chiberta a Quintaou, más de 3.000 € de diferencia por m²: la media de la ciudad no basta para decidir.',footerData:'Datos DVF · DGFiP / Cerema · 2019–2025',"note_chiberta":"Villas bajo los pinos, golf y playas","note_chambre-amour":"Playas, Sables d'Or, frente al mar","note_cinq-cantons":"Cruce histórico, comercios","note_blancpignon":"Orilla del Adour, en transformación","note_brindos":"Lago de Brindos, sur residencial","note_quintaou":"Ayuntamiento, teatro, centro"}
+};
+for(const l in TD)Object.assign(T[l],TD[l]);
+const TD2={
+fr:{typeApptsBtn:'Appartements',typeMaisonsBtn:'Maisons',heroL4:'Prix moyen maisons',statMaison:'Maisons',thermoNote1M:'Prix moyen maisons, ventes 2024–2025 · cliquez sur un quartier pour le détail',thermoNote2M:'Échelle : 0 → 13 000 €/m²',maisonUnit:'€ / m² moyen (2024–25)'},
+en:{typeApptsBtn:'Apartments',typeMaisonsBtn:'Houses',heroL4:'Average house price',statMaison:'Houses',thermoNote1M:'Average house price, 2024–2025 sales · click a neighbourhood for details',thermoNote2M:'Scale: 0 → 13,000 €/m²',maisonUnit:'average €/m² (2024–25)'},
+es:{typeApptsBtn:'Apartamentos',typeMaisonsBtn:'Casas',heroL4:'Precio medio casas',statMaison:'Casas',thermoNote1M:'Precio medio casas, ventas 2024–2025 · haga clic en un barrio para el detalle',thermoNote2M:'Escala: 0 → 13.000 €/m²',maisonUnit:'€/m² medio (2024–25)'}
+};
+for(const l in TD2)Object.assign(T[l],TD2[l]);
+const CITY_MAISON=7612;
+const fmtTh=n=>n.toLocaleString('fr-FR').replace(/[\u202f\u00a0 ]/g,'\u2009');
+let THERMO_SORT='prix',THERMO_TYPE='appt';
+const THERMO_COLORS=['#A31621','#B03A34','#BC5747','#C7715B','#D28B70'];
+function renderThermo(){
+const maison=THERMO_TYPE==='maison';
+const val=z=>maison?z.pm2Maison:z.priceAppt;
+const MAX=maison?13000:8500;
+const sorted=[...ZONES].sort((a,b)=>(!maison&&THERMO_SORT==='evolution')?parseInt(b.evo)-parseInt(a.evo):val(b)-val(a));
+document.getElementById('thermoList').innerHTML=sorted.map((z,i)=>
+'<div class="thermo-row chip'+(currentZone&&currentZone.id===z.id?' active':'')+'" id="chip-'+z.id+'" onclick="analyzeZone(\''+z.id+'\')">'
++'<div class="tr-left"><div class="tr-rank">'+String(i+1).padStart(2,'0')+'</div><div><div class="tr-nom">'+z.name[LANG]+'</div><div class="tr-note">'+t('note_'+z.id)+'</div></div></div>'
++'<div class="tr-bar"><div class="tr-fill" style="width:'+Math.round(val(z)/MAX*100)+'%;background:'+THERMO_COLORS[i]+'"></div></div>'
++'<div class="tr-right"><div class="tr-prix">'+fmtTh(val(z))+' €/m²</div><div class="tr-evo">'+(maison?z.nMaison+' '+t('sales'):'+'+parseInt(z.evo)+' % '+t('yrs'))+'</div></div>'
++'</div>').join('');
+document.getElementById('btnTypeAppt').className='sort-btn'+(!maison?' active':'');
+document.getElementById('btnTypeMaison').className='sort-btn'+(maison?' active':'');
+document.getElementById('btnSortPrix').className='sort-btn'+(THERMO_SORT!=='evolution'?' active':'');
+const be=document.getElementById('btnSortEvo');
+be.className='sort-btn'+(THERMO_SORT==='evolution'?' active':'');
+be.style.display=maison?'none':'';
+document.getElementById('thermoN1').textContent=t(maison?'thermoNote1M':'thermoNote1');
+document.getElementById('thermoN2').textContent=t(maison?'thermoNote2M':'thermoNote2');
+}
+function setSort(s){THERMO_SORT=s;renderThermo();}
+function setType(s){THERMO_TYPE=s;if(s==='maison')THERMO_SORT='prix';renderThermo();}
+function renderDesignBits(){
+document.querySelectorAll('[data-i18n-html]').forEach(el=>{el.innerHTML=t(el.dataset.i18nHtml);});
+const avg=Math.round(ZONES.reduce((s,z)=>s+z.priceAppt,0)/ZONES.length);
+const avgEvo=Math.round(ZONES.reduce((s,z)=>s+parseInt(z.evo),0)/ZONES.length);
+document.getElementById('heroPrix').textContent=fmtTh(avg)+' €/m²';
+document.getElementById('heroEvo').textContent='+'+avgEvo+' %';
+document.getElementById('heroMaison').textContent=fmtTh(CITY_MAISON)+' €/m²';
+document.getElementById('efAddr').placeholder=t('estAddrPh');
+}
+const _renderD=render;
+render=function(zone,geo,fetchLive){
+_renderD(zone,geo,fetchLive);
+document.getElementById('priceMaison').textContent=zone.pm2Maison?zone.pm2Maison.toLocaleString('fr-FR'):'—';
+document.getElementById('maisonSub').textContent=t('maisonUnit')+' · '+(zone.nMaison||0)+' '+t('sales');
+};
+const _setLangD=setLang;
+setLang=function(l){_setLangD(l);renderThermo();renderDesignBits();};
+renderChart=function(history,years){
+if(chartInstance)chartInstance.destroy();
+document.getElementById('chartContainer').innerHTML='<canvas id="priceChart"></canvas>';
+chartInstance=new Chart(document.getElementById('priceChart'),{type:'line',data:{labels:years,datasets:[{data:history,borderColor:'#A31621',backgroundColor:'rgba(163,22,33,0.06)',borderWidth:2.5,pointBackgroundColor:'#A31621',pointRadius:4.5,pointHoverRadius:7,fill:true,tension:0.38}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+c.parsed.y.toLocaleString('fr-FR')+' €/m²'}}},scales:{x:{grid:{display:false},ticks:{font:{size:11,family:"'Spline Sans Mono',monospace"},color:'rgba(34,27,22,0.55)'}},y:{grid:{color:'rgba(34,27,22,0.06)'},ticks:{font:{size:11,family:"'Spline Sans Mono',monospace"},color:'rgba(34,27,22,0.55)',callback:v=>v.toLocaleString('fr-FR')+' €'}}}}});
+};
+const _azD=analyzeZone;
+analyzeZone=function(id){_azD(id);renderThermo();const r=document.getElementById('results');if(r&&r.scrollIntoView)r.scrollIntoView({behavior:'smooth',block:'start'});};
+const estDetailsEl=document.getElementById('estDetails');
+document.getElementById('efAddr').addEventListener('focus',()=>{estDetailsEl.style.display='block';});
+document.getElementById('estForm').addEventListener('submit',()=>{if(estDetailsEl.style.display!=='block')estDetailsEl.style.display='block';});
+setLang(LANG);
+
 </script>
 </body>
 </html>
